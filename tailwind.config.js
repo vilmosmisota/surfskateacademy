@@ -6,7 +6,16 @@ module.exports = {
     "./src/views/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    colors: {
+      light: "F5F5F5",
+      orange: "#FDE047",
+      green: "#BFFD47",
+      red: "#FD8547",
+    },
+    fontFamily: {
+      sans: "'Raleway', sans-serif",
+      sansBody: "'Roboto', sans-serif",
+    },
   },
   plugins: [require("tailwindcss"), require("autoprefixer")],
 };
