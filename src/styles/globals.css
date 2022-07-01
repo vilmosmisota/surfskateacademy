@@ -16,3 +16,9 @@
     @apply font-sansBody font-normal leading-relaxed tracking-wide;
   }
 }
+
+/* @layer components {
+  .bgDiv {
+    clip-path: polygon(81% 0, 100% 0, 100% 100%, 0 100%, 0% 50%);
+  }
+} */

@@ -7,10 +7,13 @@ module.exports = {
   ],
   theme: {
     colors: {
-      light: "F5F5F5",
+      light: "#F5F5F5",
+      dark: "#0f172a",
+      lightBlue: "#E2E8F0",
       orange: "#FDE047",
       green: "#BFFD47",
       red: "#FD8547",
+      black: "#000",
     },
     fontFamily: {
       sans: "'Raleway', sans-serif",
