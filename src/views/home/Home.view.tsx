@@ -1,5 +1,7 @@
 import Image from "next/image";
 import homeHeader from "../../assets/img/homeHeader.jpg";
+import pin from "../../assets/icons/map-pin.svg";
+import Link from "next/link";
 
 export default function HomeView() {
   return (
@@ -34,7 +36,7 @@ export default function HomeView() {
         </a>
       </section>
       <main>
-        <section className="px-4 py-5 mx-4 lg:mx-auto rounded-lg lg:px-0 max-w-screen-lg bg-darkBlue text-center">
+        <section className="px-4 mb-10 py-5 mx-4 lg:mx-auto rounded-lg lg:px-0 max-w-screen-lg bg-darkBlue text-center">
           <h2 className="max-w-sm lg:max-w-lg mx-auto text-light font-normal  tracking-wide">
             Surfskate training helps you to{" "}
             <span className="uppercase text-red font-black">
@@ -43,6 +45,36 @@ export default function HomeView() {
             and <span className="uppercase text-red font-black">Stay Fit</span>{" "}
             during the flat periods.
           </h2>
+        </section>
+        <section className=" bg-orange  mb-10 py-5">
+          <div className=" py-5 mx-4 lg:mx-auto lg:px-0 max-w-screen-lg text-center">
+            <h2 className="text-center font-black tracking-wide uppercase mb-4">
+              Earliest available classes
+            </h2>
+            <article className="bg-lightBlue rounded-lg p-5 mb-5 text-center shadow-md shadow-black">
+              <h3 className="border-2  border-red rounded-lg block p-2 mb-5">
+                26 Jun, 10:00 am
+              </h3>
+              <div className="border-2 border-red rounded-lg p-2 mb-5 flex justify-center flex-col min-h-[150px]">
+                <p className="mb-2 ">Bristo Square, Edinburgh</p>
+                <div className="w-7 text-center mx-auto">
+                  <Image
+                    src={pin as string}
+                    alt="location"
+                    layout="responsive"
+                  />
+                </div>
+              </div>
+              <button className="bg-red w-full p-2 font-black uppercase tracking-wide font-sans rounded-lg">
+                Book
+              </button>
+            </article>
+            <Link href="/" passHref>
+              <a className="capitalize underline underline-offset-2 font-semibold">
+                See all classes
+              </a>
+            </Link>
+          </div>
         </section>
       </main>
     </>

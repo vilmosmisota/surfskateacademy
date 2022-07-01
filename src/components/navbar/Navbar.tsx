@@ -13,7 +13,7 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 z-50 h-14 w-full py-5">
       <div className="container mx-auto flex h-full max-w-screen-lg items-center justify-between  px-4 lg:px-0 font-sans font-semibold uppercase">
-        <div className="w-20 md:w-24 cursor-pointer">
+        <div className="w-20 md:w-24 lg:w-36 cursor-pointer">
           <Link href="/" passHref>
             <Image src={logo as string} alt="logo" layout="responsive" />
           </Link>
