@@ -23,7 +23,7 @@ export default function HomeView() {
 
         <div className="absolute  w-full h-[50%] md:h-[60%] bottom-0 left-0 bg-orange z-0"></div>
       </header>
-      <section className="px-4 py-5 mx-auto lg:px-0 max-w-screen-lg text-right">
+      <section className="px-4 py-5 my-5 mx-auto lg:px-0 max-w-screen-lg text-right">
         <a
           href="https://yowsurf.com/"
           className="uppercase font-sans font-black cursor-pointer text-red"
@@ -33,6 +33,18 @@ export default function HomeView() {
           Supported by <span className="text-black">YOW</span>
         </a>
       </section>
+      <main>
+        <section className="px-4 py-5 mx-4 lg:mx-auto rounded-lg lg:px-0 max-w-screen-lg bg-darkBlue text-center">
+          <h2 className="max-w-sm lg:max-w-lg mx-auto text-light font-normal  tracking-wide">
+            Surfskate training helps you to{" "}
+            <span className="uppercase text-red font-black">
+              Improve Your Surfing
+            </span>{" "}
+            and <span className="uppercase text-red font-black">Stay Fit</span>{" "}
+            during the flat periods.
+          </h2>
+        </section>
+      </main>
     </>
   );
 }
