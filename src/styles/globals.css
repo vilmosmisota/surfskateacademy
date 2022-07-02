@@ -17,8 +17,7 @@
   }
 }
 
-/* @layer components {
-  .bgDiv {
-    clip-path: polygon(81% 0, 100% 0, 100% 100%, 0 100%, 0% 50%);
-  }
-} */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #000 !important;
+}
