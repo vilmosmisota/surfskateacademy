@@ -20,6 +20,11 @@ module.exports = {
       sans: "'Raleway', sans-serif",
       sansBody: "'Roboto', sans-serif",
     },
+    extend: {
+      boxShadow: {
+        DEFAULT: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+      },
+    },
   },
   plugins: [require("tailwindcss"), require("autoprefixer")],
 };
