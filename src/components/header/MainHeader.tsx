@@ -10,7 +10,7 @@ export default function MainHeader() {
             ON LAND SURF TRAINING FOR ALL LEVELS OF SURFERS IN SCOTLAND
           </h1>
         </div>
-        <div className="w-full max-w-[480px] lg:m-0 mx-auto lg:self-end relative z-20 shadow lg:shadow-none">
+        <div className="w-full max-w-[480px] lg:m-0 mx-auto lg:self-end relative z-20 shadow ">
           <Image
             src={homeHeader}
             alt="surf training in Edinburgh"

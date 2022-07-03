@@ -1,6 +1,7 @@
 import sample from "../../assets/img/sample.jpg";
 import Image from "next/image";
 import { useState } from "react";
+import SliderClickBtn from "./SliderClickBtn";
 
 const contents = [
   {
@@ -20,28 +21,36 @@ const contents = [
 ];
 
 export default function SliderClick() {
-  const [index, setIndex] = useState(0);
+  const [position, setPosition] = useState(0);
+  const handleClick = (newposition: number) => setPosition(newposition);
+
   return (
     <section className="  mx-auto lg:px-0 max-w-screen-lg mb-10 md:mb-20">
       <article className="flex flex-col-reverse lg:flex-row">
         <div className="w-full -mt-[10%] z-0 lg:mt-14">
-          <Image src={contents[index].img} alt="location" layout="responsive" />
+          <Image
+            src={contents[position].img}
+            alt="location"
+            layout="responsive"
+          />
         </div>
-        <div className="bg-darkBlue rounded-lg px-6 mx-4 py-12 shadow z-10 h-min lg:-ml-6">
-          <div className="max-w-lg mx-auto mb-4">
+        <div className="bg-darkBlue min-h-[350px] lg:min-h-[400px] flex flex-col justify-between rounded-lg px-6 mx-4 py-12 shadow z-10 h-min lg:-ml-6">
+          <div className="max-w-lg mx-auto">
             <h2 className="uppercase font-black max-w-[150px] text-red pb-2 tracking-wide">
-              {contents[index].title}
+              {contents[position].title}
             </h2>
-            <p className="text-light">{contents[index].content}</p>
+            <p className="text-light">{contents[position].content}</p>
           </div>
           <div className="flex justify-center align-middle">
-            {contents.map((el, i) => {
+            {contents.map((btn, i) => {
               return (
-                <button
-                  onClick={() => setIndex(i)}
-                  key={el.id}
-                  className="w-5 h-5 mx-1 border-2 rounded-full border-red"
-                ></button>
+                <SliderClickBtn
+                  key={btn.id}
+                  id={btn.id}
+                  index={i}
+                  position={position}
+                  handleClick={handleClick}
+                />
               );
             })}
           </div>
