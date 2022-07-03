@@ -29,7 +29,7 @@ export default function Footer() {
   return (
     <footer className="bg-darkBlue">
       <section className="pt-10 mx-4 lg:mx-auto lg:px-0 max-w-screen-lg text-center md:grid-cols-3 md:grid md:justify-items-center gap-5 ">
-        <article className="border-2 border-orange md:min-w-full md:max-w-[290px] rounded-lg min-h-[200px] flex align-middle justify-center flex-col mb-5">
+        <article className="border-2 md:min-h-[300px] py-5 border-orange md:min-w-full md:max-w-[290px] rounded-lg min-h-[200px] flex align-middle justify-center flex-col mb-5">
           <div className="flex justify-center mb-5">
             {icons.map((icon) => (
               <a
@@ -52,7 +52,7 @@ export default function Footer() {
             info@thesurfskateacademy.com
           </a>
         </article>
-        <article className="border-2 border-orange md:min-w-full md:max-w-[290px] rounded-lg min-h-[200px] flex align-middle justify-center mb-5">
+        <article className="border-2 md:min-h-[300px] py-5 border-orange md:min-w-full md:max-w-[290px] rounded-lg min-h-[200px] flex align-middle justify-center mb-5">
           <ul className="list-none flex flex-col justify-evenly">
             {midPaths.map((path) => (
               <li
@@ -66,7 +66,7 @@ export default function Footer() {
             ))}
           </ul>
         </article>
-        <article className="border-2 border-orange md:min-w-full md:max-w-[290px] rounded-lg min-h-[200px] flex align-middle justify-center mb-5">
+        <article className="border-2 md:min-h-[300px] py-5 border-orange md:min-w-full md:max-w-[290px] rounded-lg min-h-[200px] flex align-middle justify-center mb-5">
           <ul className="list-none flex flex-col justify-evenly">
             {sidePaths.map((path) => (
               <li
