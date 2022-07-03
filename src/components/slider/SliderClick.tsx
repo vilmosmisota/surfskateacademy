@@ -34,7 +34,7 @@ export default function SliderClick() {
             layout="responsive"
           />
         </div>
-        <div className="bg-darkBlue min-h-[350px] lg:min-h-[400px] flex flex-col justify-between rounded-lg px-6 mx-4 py-12 shadow z-10 h-min lg:-ml-6">
+        <div className="bg-darkBlue min-h-[450px] flex flex-col justify-between rounded-lg px-6 mx-4 py-12 shadow z-10 h-min lg:-ml-6">
           <div className="max-w-lg mx-auto">
             <h2 className="uppercase font-black max-w-[150px] text-red pb-2 tracking-wide">
               {contents[position].title}
