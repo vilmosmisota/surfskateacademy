@@ -2,62 +2,60 @@ import dayjs from "dayjs";
 import React from "react";
 import { IClass } from "../../interfaces";
 
-export default function Day({
-  day,
-  classes,
-}: {
+type DayProps = {
   day: dayjs.Dayjs;
   classes: IClass[];
-}) {
-  const dayClasses = classes.filter((cls) => {
-    const clsDay = cls.date.split("T");
-    if (clsDay[0] !== day.format("YYYY-MM-DD")) return;
-    return cls;
-  });
+  rowIdx: number;
+};
+
+export default function Day({ day, classes }: DayProps) {
+  const isToday = day.format("DD-MM-YY") === dayjs().format("DD-MM-YY");
+  const isThisMonth = day.format("MM-YY") === dayjs().format("MM-YY");
+  const isPrevDay = day.format("DD-MM-YY") < dayjs().format("DD-MM-YY");
+  const isPrevMonth = day.format("MM-YY") < dayjs().format("MM-YY");
+
+  const dayClasses = classes
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+    .filter((cls) => {
+      const clsDay = cls.date.split("T");
+      if (clsDay[0] !== day.format("YYYY-MM-DD")) return;
+      return cls;
+    });
 
   const getCurrentDayClass = () => {
-    return day.format("DD-MM-YY") === dayjs().format("DD-MM-YY")
-      ? "text-red"
-      : "";
+    if (isToday) return "text-red";
+    if ((isPrevDay && isThisMonth) || isPrevMonth) return "text-darkBlue";
+    return "text-light";
   };
 
   const hidePrevDays = () => {
-    if (
-      (day.format("DD-MM-YY") < dayjs().format("DD-MM-YY") &&
-        day.format("MM-YY") === dayjs().format("MM-YY")) ||
-      day.format("MM-YY") < dayjs().format("MM-YY")
-    ) {
-      return "opacity-30";
-    }
-    return "";
+    if (isPrevMonth) return "opacity-0";
+    if ((isPrevDay && isThisMonth) || isPrevMonth)
+      return "bg-none border-darkBlue border";
+    return "bg-darkBlue";
   };
 
   const hideNAclasses = (cls: IClass) => {
-    if (cls.is_available) {
-      return "text-orange";
-    }
-    return "text-black opacity-50";
+    if ((isPrevDay && isThisMonth) || isPrevMonth)
+      return "text-darkBlue opacity-40";
+    if (!cls.is_available) return "text-light opacity-20";
+    if (cls.is_available && isPrevDay && isThisMonth) return "text-darkBlue";
+    return "text-light";
   };
 
   return (
     <>
       <div
-        className={`flex flex-col bg-darkBlue rounded-sm max-h-28 overflow-y-scroll ${hidePrevDays()}`}
+        className={`flex-col rounded-sm min-h-[100px] overflow-hidden ${hidePrevDays()}`}
       >
         <header className="flex flex-col items-center">
           <p
-            className={`text-sm font-sans font-black text-light p-1 my-1 text-center   ${getCurrentDayClass()}`}
+            className={`text-sm md:text-base font-sans font-black p-1 my-1 text-center   ${getCurrentDayClass()}`}
           >
             {day.format("DD")}
           </p>
         </header>
-        <div
-          className="flex-1 cursor-pointer"
-          // onClick={() => {
-          //   setDaySelected(day);
-          //   setShowEventModal(true);
-          // }}
-        >
+        <div className="flex-1">
           {dayClasses.map((cls, idx) => (
             <div key={idx} className="text-center mb-2">
               <p className={`text-xs  underline mb-1 ${hideNAclasses(cls)}`}>

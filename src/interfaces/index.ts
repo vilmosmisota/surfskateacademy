@@ -4,6 +4,6 @@ export interface IClass {
   location: string;
   is_available: boolean;
   map_link?: string;
-  city?: string;
+  city: string;
   info?: string;
 }

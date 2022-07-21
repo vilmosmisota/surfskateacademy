@@ -15,7 +15,7 @@ export default function Month({
       {month.map((row, i) => (
         <React.Fragment key={i}>
           {row.map((day, idx) => (
-            <Day day={day} key={idx} classes={classes} />
+            <Day day={day} key={idx} rowIdx={i} classes={classes} />
           ))}
         </React.Fragment>
       ))}

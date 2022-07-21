@@ -1,46 +1,29 @@
 import dayjs from "dayjs";
-import Image from "next/image";
 import { useEffect, useState } from "react";
-import sample from "../../assets/sample/bookin.jpg";
 import CalendarHeader from "../../components/calendar/CalendarHeader";
 import Month from "../../components/calendar/Month";
+import { IClass } from "../../interfaces";
 import { ClassesProps } from "../../pages/booking";
 import getMonth from "../../utils/getMonth";
+import BookingHeader from "./BookingHeader";
+import FilterClasses from "./FilterClasses";
 
 export default function BookingView({ classes }: ClassesProps) {
   const month = dayjs().month();
   const [monthIndex, setMonthIndex] = useState(month);
-  const [currenMonth, setCurrentMonth] = useState(getMonth());
-  const handlePrevClick = () => {
-    if (monthIndex <= month) return;
-    setMonthIndex(monthIndex - 1);
-  };
-  const handleNextClick = () => {
-    setMonthIndex(monthIndex + 1);
-  };
+  const currenMonth = useMonthData(monthIndex);
+  const cities = getCities(classes);
 
-  useEffect(() => {
-    setCurrentMonth(getMonth(monthIndex));
-  }, [monthIndex]);
+  const handlePrevClick = () =>
+    monthIndex <= month ? null : setMonthIndex(monthIndex - 1);
+
+  const handleNextClick = () => setMonthIndex(monthIndex + 1);
 
   return (
     <>
-      <header className="mt-16 relative  max-w-screen-lg mx-auto  ">
-        <div className="h-[250px] w-full img-overlay">
-          <Image
-            src={sample}
-            alt={"string"}
-            layout={"fill"}
-            objectFit={"cover"}
-          />
-        </div>
-        <div className="absolute top-2/4 left-10 -translate-y-1/2">
-          <h1 className="text-red max-w-[190px]">Book a class with us</h1>
-        </div>
-      </header>
-      <main className="md:px-4 pb-5 mb-10 md:mx-4 -mt-16 lg:mx-auto rounded-lg lg:px-0 max-w-[950px] relative z-[5] bg-beige border-orange">
-        <section className="h-[100px] bg-orange rounded-t-lg">filter</section>
-
+      <BookingHeader />
+      <main className=" pb-5 mb-10 md:mx-4 -mt-16 lg:mx-auto rounded-lg lg:px-0 max-w-[950px] relative z-[5] bg-beige border-orange">
+        <FilterClasses cities={cities} />
         <section className="p-2">
           <CalendarHeader
             handlePrevClick={handlePrevClick}
@@ -54,4 +37,27 @@ export default function BookingView({ classes }: ClassesProps) {
       </main>
     </>
   );
+}
+
+function getCities(classes: IClass[]) {
+  const cities = Array.from(
+    new Set(
+      classes.map((cls) => {
+        const clsDay = cls.date.split("T");
+        if (clsDay[0] < dayjs().format("YYYY-MM-DD")) return "";
+        return cls.city;
+      })
+    )
+  );
+  return cities;
+}
+
+function useMonthData(monthIndex: number) {
+  const [currenMonth, setCurrentMonth] = useState(getMonth());
+
+  useEffect(() => {
+    setCurrentMonth(getMonth(monthIndex));
+  }, [monthIndex]);
+
+  return currenMonth;
 }

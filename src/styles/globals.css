@@ -15,6 +15,10 @@
   p {
     @apply font-sansBody font-normal leading-relaxed tracking-wide;
   }
+
+  select {
+    background-image: url("../../public/arrow-down.svg");
+  }
 }
 
 .swiper-button-next,

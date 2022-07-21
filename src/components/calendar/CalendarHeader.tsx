@@ -14,10 +14,10 @@ export default function CalendarHeader({
   handleNextClick,
   monthIndex,
 }: CalendarHeaderProps) {
-  const days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+  const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
   return (
     <header className="my-5">
-      <div className="flex max-w-sm mx-5 justify-between mb-5">
+      <div className="flex max-w-sm mx-5 justify-between mb-5 md:mx-auto md:my-10">
         <button onClick={handlePrevClick} className="w-5">
           <Image
             src={arrowLeft as string}
