@@ -38,7 +38,7 @@ export default function Day({ day, classes }: DayProps) {
   const hideNAclasses = (cls: IClass) => {
     if ((isPrevDay && isThisMonth) || isPrevMonth)
       return "text-darkBlue opacity-40";
-    if (!cls.is_available) return "text-light opacity-20";
+    if (!cls.is_available) return "text-light opacity-40 line-through";
     if (cls.is_available && isPrevDay && isThisMonth) return "text-darkBlue";
     return "text-light";
   };
@@ -46,7 +46,7 @@ export default function Day({ day, classes }: DayProps) {
   return (
     <>
       <div
-        className={`flex-col rounded-sm min-h-[100px] overflow-hidden ${hidePrevDays()}`}
+        className={`flex-col rounded-sm min-h-[100px] hover:shadow transition-all cursor-pointer overflow-hidden ${hidePrevDays()}`}
       >
         <header className="flex flex-col items-center">
           <p
@@ -58,7 +58,7 @@ export default function Day({ day, classes }: DayProps) {
         <div className="flex-1">
           {dayClasses.map((cls, idx) => (
             <div key={idx} className="text-center mb-2">
-              <p className={`text-xs  underline mb-1 ${hideNAclasses(cls)}`}>
+              <p className={`text-xs mb-1 ${hideNAclasses(cls)}`}>
                 {cls.date.split("T")[1].substring(0, 5)}
               </p>
             </div>

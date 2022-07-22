@@ -1,5 +1,12 @@
-export default function FilterClasses({ cities }: { cities: string[] }) {
-  console.log(cities);
+type FilterClassesProps = {
+  cities: string[];
+  handleSelectFilter: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+};
+
+export default function FilterClasses({
+  cities,
+  handleSelectFilter,
+}: FilterClassesProps) {
   return (
     <section className="h-[120px] md:h-[100px] bg-orange rounded-t-lg py-2 px-5 flex flex-col-reverse items-center justify-evenly md:justify-evenly md:flex-row">
       <div className="flex items-center w-full max-w-xs justify-between">
@@ -9,6 +16,7 @@ export default function FilterClasses({ cities }: { cities: string[] }) {
         <select
           name="filter-class"
           id="filter-class"
+          onChange={handleSelectFilter}
           className="bg-orange rounded-lg border-black text-sm focus:border-red focus:ring-red"
         >
           <option value="all">all</option>
