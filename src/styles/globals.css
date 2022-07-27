@@ -35,3 +35,14 @@
   background-color: rgba(0, 0, 0, 0.4);
   content: "";
 }
+
+.location {
+  background-image: url("../../public/map-pin.svg");
+  background-repeat: no-repeat;
+  background-position: 0 center;
+  overflow: visible;
+  background-size: 20px 20px;
+  padding-left: 25px;
+  display: block;
+  width: 100%;
+}
