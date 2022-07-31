@@ -62,7 +62,7 @@ export default function SliderDrag() {
           {items.map((item) => {
             return (
               <SwiperSlide key={item.id}>
-                <article className="bg-lightBlue mx-auto  min-w-[250px] md:min-w-[300px] max-w-sm rounded-lg p-5 mb-5 text-center shadow">
+                <article className="bg-beige mx-auto  min-w-[250px] md:min-w-[300px] max-w-sm rounded-lg p-5 mb-5 text-center shadow">
                   <div className="border-2  border-red rounded-lg p-2 mb-5">
                     <h3>{item.date}</h3>
                     <p>{item.day}</p>

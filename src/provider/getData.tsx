@@ -10,3 +10,18 @@ export const getClasses = async (): Promise<{
 
   return { data, error };
 };
+
+export const getClassesById = async (
+  id: string
+): Promise<{
+  data: IClass | null;
+  error: PostgrestError | null;
+}> => {
+  const { data, error } = await supabase
+    .from<IClass>("class")
+    .select("*")
+    .eq("class_id", id)
+    .single();
+
+  return { data, error };
+};

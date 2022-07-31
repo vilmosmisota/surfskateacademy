@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { IClass } from "../../interfaces";
 import Modal from "../modals/Modal";
 import closeIcon from "../../assets/icons/close.svg";
+import Link from "next/link";
 
 type DayProps = {
   day: dayjs.Dayjs;
@@ -24,6 +25,14 @@ export default function Day({ day, classes }: DayProps) {
   const isThisMonth = day.format("MM-YY") === dayjs().format("MM-YY");
   const isPrevDay = day.format("DD-MM-YY") < dayjs().format("DD-MM-YY");
   const isPrevMonth = day.format("MM-YY") < dayjs().format("MM-YY");
+  const isClassesOld = () => {
+    if (dayClasses.length === 0) return;
+
+    console.log(new Date(dayClasses[0].date.split("T")[0]));
+    console.log(new Date());
+  };
+
+  console.log(isClassesOld());
 
   const getCurrentDayClass = () => {
     if (isToday) return "text-red";
@@ -96,7 +105,10 @@ const ClsDay = ({
 }: ClsDayProps) => {
   const [classModalOpen, setClassModalOpen] = useState(false);
   const close = () => setClassModalOpen(false);
-  const open = () => setClassModalOpen(true);
+  const open = () => {
+    if (new Date(dayClasses[0].date.split("T")[0]) < new Date()) return;
+    setClassModalOpen(true);
+  };
 
   const isThisMonth = day.format("MM-YY") === dayjs().format("MM-YY");
   const isPrevDay = day.format("DD-MM-YY") < dayjs().format("DD-MM-YY");
@@ -195,9 +207,11 @@ const ModalClasses = ({ dayClasses, day, close }: ModalClassesProps) => {
 
             <div className="w-2/6 self-center justify-self-end text-right ">
               {cls.is_available ? (
-                <button className=" bg-green cursor-pointer py-1 px-5 rounded-lg font-black shadow">
-                  {cls.date.split("T")[1].substring(0, 5)}
-                </button>
+                <Link href={`/booking/${cls.class_id}`}>
+                  <button className=" bg-green cursor-pointer py-1 px-5 rounded-lg font-black shadow">
+                    {cls.date.split("T")[1].substring(0, 5)}
+                  </button>
+                </Link>
               ) : (
                 <button className=" bg-red opacity-40 cursor-default py-1 px-5 rounded-lg font-black shadow line-through">
                   {cls.date.split("T")[1].substring(0, 5)}
