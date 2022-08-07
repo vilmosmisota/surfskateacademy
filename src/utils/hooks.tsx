@@ -19,3 +19,9 @@ export const useWindowDimensions = () => {
 
   return windowDimensions;
 };
+
+export function useLogger(value: unknown) {
+  useEffect(() => {
+    console.log(value);
+  }, [value]);
+}

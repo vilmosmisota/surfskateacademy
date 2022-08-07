@@ -104,6 +104,7 @@ const BookingForm = ({ clsId }: { clsId: string }) => {
       email: email.toString().toLowerCase(),
       phonenumber,
       message,
+      is_read: false,
       is_equipment: is_equipment === "true" ? true : false,
     };
 
