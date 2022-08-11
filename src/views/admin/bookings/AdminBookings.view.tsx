@@ -1,17 +1,20 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import Link from "next/link";
-import { IAdminBookingItem } from "../../interfaces";
-import close from "../../assets/icons/close.svg";
+import { IAdminBookingItem } from "../../../interfaces";
+import close from "../../../assets/icons/close.svg";
 import Image from "next/image";
 import { useState } from "react";
-import Modal from "../../components/modals/Modal";
-import { deleteBooking } from "../../provider/deleteData";
+import Modal from "../../../components/modals/Modal";
+import { deleteBooking } from "../../../provider/deleteData";
 import { useRouter } from "next/router";
+import BackButton from "../../../components/buttons/BackButton";
 
 export default function AdminBookingsView({
   bookings,
+  count,
 }: {
   bookings: IAdminBookingItem[];
+  count: number;
 }) {
   const [classModalOpen, setClassModalOpen] = useState(false);
   const [itemToDel, setItemToDel] = useState("");
@@ -51,6 +54,7 @@ export default function AdminBookingsView({
   return (
     <>
       <main className="mt-16 relative  max-w-screen-md mx-auto px-4 lg:px-0">
+        <BackButton />
         <header className="text-center mb-5">
           <h1>Bookings</h1>
         </header>
@@ -65,6 +69,7 @@ export default function AdminBookingsView({
             );
           })}
         </section>
+        <Pagination count={count} />
       </main>
       <Modal state={classModalOpen}>
         <section className="bg-red p-5 rounded-lg relative text-center">
@@ -141,5 +146,28 @@ const BookingItem = ({ booking, openConfirmation }: BookingItemProps) => {
         </button>
       )}
     </article>
+  );
+};
+
+const Pagination = ({ count }: { count: number }) => {
+  const totalPages = count / 10;
+  if (totalPages < 1) return <></>;
+
+  return (
+    <section className="border-2 text-center">
+      <ul>
+        {new Array(totalPages).fill([]).map((x, i) => (
+          <li key={i + 1}>
+            <Link href="/admin/bookings?page=1">{i + 1}</Link>
+          </li>
+        ))}
+        {/* <li>
+          <Link href="/admin/bookings?page=1">1</Link>
+        </li>
+        <li>
+          <Link href="/admin/bookings?page=2">2</Link>
+        </li> */}
+      </ul>
+    </section>
   );
 };

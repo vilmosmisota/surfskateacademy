@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { IBooking } from "../../interfaces";
 import { AdminProps } from "../../pages/admin";
 import inbox from "../../assets/icons/inbox.svg";
 import calendar from "../../assets/icons/calendar.svg";
@@ -9,7 +8,7 @@ export default function AdminView({ count }: AdminProps) {
   return (
     <main className="mt-16 relative  max-w-screen-lg mx-auto px-4 lg:px-0 min-h-[500px] flex items-center">
       <section className="w-full  max-w-2xl mx-auto flex flex-col md:flex-row justify-evenly">
-        <Link href="/admin/bookings">
+        <Link href="/admin/bookings?page=1">
           <div className="text-center relative shadow cursor-pointer min-w-[300px] bg-orange p-5 rounded-lg mb-5 md:mb-0">
             <h3 className="uppercase tracking-wider font-black mb-2">
               Bookings

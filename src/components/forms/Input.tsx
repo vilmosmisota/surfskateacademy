@@ -19,16 +19,10 @@ export default function Input({
   const [value, setValue] = useState("");
   const [touched, setTouched] = useState(false);
 
-  useEffect(() => {
-    if (touched) {
-      console.log("vege");
-    }
-  }, [touched]);
-
   return (
     <div
       key={name}
-      className="flex align-middle text-left justify-evenly flex-col w-full md:flex-row md:justify-between md:w-3/4 md:mx-auto  mb-4"
+      className="flex align-middle text-left justify-evenly flex-col w-full md:flex-row md:justify-between md:w-3/4 md:mx-auto   mb-4"
     >
       <label
         className="pb-2 font-sansBody capitalize md:self-center md:pb-0"

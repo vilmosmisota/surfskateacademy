@@ -39,12 +39,26 @@ export const getNumOfUnreadBookings = async (): Promise<{
   return { count };
 };
 
-export const getAllBookings = async (): Promise<{
+export const getNumOfBookings = async () => {
+  const { count, error } = await supabase
+    .from<IBooking>("booking")
+    .select("*", { count: "exact", head: true });
+  if (error) {
+    throw new Error(error.message);
+  }
+  return count as number;
+};
+
+export const getRangedBookings = async (
+  start: number,
+  finish: number
+): Promise<{
   data: IBooking[] | null;
 }> => {
   const { data, error } = await supabase
     .from<IBooking>("booking")
-    .select("created_at,booking_id,email,is_read , class(date,city)");
+    .select("created_at,booking_id,email,is_read , class(date,city)")
+    .range(start, finish);
 
   if (error) {
     throw new Error(error.message);
@@ -53,10 +67,10 @@ export const getAllBookings = async (): Promise<{
   return { data };
 };
 
-export const getAllBookingsById = async (
+export const getBookingById = async (
   id: string
 ): Promise<{
-  data: IBooking | null;
+  data: IBooking;
 }> => {
   const { data, error } = await supabase
     .from<IBooking>("booking")

@@ -1,5 +1,5 @@
 import { PostgrestError } from "@supabase/supabase-js";
-import { IBooking } from "../interfaces";
+import { IBooking, IClass } from "../interfaces";
 import { supabase } from "../libs/supabase";
 
 export const postBooking = async (
@@ -13,4 +13,32 @@ export const postBooking = async (
     .insert(payload);
 
   return { data, error };
+};
+
+export const postClass = async (
+  payload = {}
+): Promise<{
+  data: IClass[] | null;
+  error: PostgrestError | null;
+}> => {
+  const { data, error } = await supabase.from<IClass>("class").insert(payload);
+
+  return { data, error };
+};
+
+export const updateIsRead = async (
+  id: string | undefined
+): Promise<{
+  res: string;
+}> => {
+  const { error } = await supabase
+    .from<IBooking>("booking")
+    .update({ is_read: true })
+    .match({ booking_id: id });
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return { res: "success" as string };
 };

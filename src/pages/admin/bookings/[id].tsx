@@ -1,13 +1,16 @@
 import { GetServerSideProps } from "next";
+import { IBooking } from "../../../interfaces";
 import { protectedRoute } from "../../../provider/auth";
-import { getAllBookings, getAllBookingsById } from "../../../provider/getData";
+import { getBookingById } from "../../../provider/getData";
 
-export default function AdminBookingItem() {
-  return (
-    <main>
-      <h1>Booking item</h1>
-    </main>
-  );
+import BookedItemView from "../../../views/admin/dynamicPath/BookedItem.view";
+
+export type AdminBookedItemProps = {
+  booking: IBooking;
+};
+
+export default function AdminBookedItem({ booking }: AdminBookedItemProps) {
+  return <BookedItemView booking={booking} />;
 }
 
 export const getServerSideProps: GetServerSideProps = async ({
@@ -20,9 +23,9 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
 
   if (typeof query.id !== "undefined") {
-    const { data: booking } = await getAllBookingsById(query.id as string);
+    const { data: booking } = await getBookingById(query.id as string);
     return { props: { booking } };
   }
 
-  return { props: {} };
+  return { notFound: true };
 };
