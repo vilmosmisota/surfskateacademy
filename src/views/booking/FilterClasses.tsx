@@ -23,7 +23,7 @@ export default function FilterClasses({
           {cities.map((item, key) => {
             if (item === "") return;
             return (
-              <option className="text-sm" key={key} value={item.toLowerCase()}>
+              <option className="text-sm " key={key} value={item.toLowerCase()}>
                 {item}
               </option>
             );

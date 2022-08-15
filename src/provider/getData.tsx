@@ -57,7 +57,7 @@ export const getRangedBookings = async (
 }> => {
   const { data, error } = await supabase
     .from<IBooking>("booking")
-    .select("created_at,booking_id,email,is_read , class(date,city)")
+    .select("created_at,booking_id,email,is_read , class(date,time,city)")
     .range(start, finish);
 
   if (error) {
@@ -74,7 +74,7 @@ export const getBookingById = async (
 }> => {
   const { data, error } = await supabase
     .from<IBooking>("booking")
-    .select("*, class(date,city, location)")
+    .select("*, class(date,time,city, location)")
     .eq("booking_id", id)
     .single();
 

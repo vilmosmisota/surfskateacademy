@@ -49,7 +49,7 @@ const customDays = (day: dayjs.Dayjs) => {
   const isPrevMonth = day.format("MM-YY") < dayjs().format("MM-YY");
 
   const getCurrentDayClass = () => {
-    if (isToday) return "text-red";
+    if (isToday) return "text-light bg-red p-1 rounded-xl w-10";
     if ((isPrevDay && isThisMonth) || isPrevMonth) return "text-darkBlue";
     return "text-light";
   };

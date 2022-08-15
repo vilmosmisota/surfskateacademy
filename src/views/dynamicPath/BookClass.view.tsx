@@ -51,9 +51,7 @@ const BookingInfo = ({ cls }: ClassProps) => {
         </li>
         <li className="flex justify-between mb-4 w-full">
           <p>Time:</p>
-          <p className="font-bold text-right">
-            {cls.date.split("T")[1].substring(0, 5)}
-          </p>
+          <p className="font-bold text-right">{cls.time.slice(0, -3)}</p>
         </li>
         <li className="flex justify-between mb-4 w-full">
           <p>Location:</p>

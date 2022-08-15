@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Input({
   name,
@@ -7,6 +7,7 @@ export default function Input({
   isRequired,
   pattern,
   placeholder,
+  serverValue,
 }: {
   name: string;
   wasSubmitted?: boolean;
@@ -15,14 +16,16 @@ export default function Input({
   label: string;
   pattern?: string;
   placeholder?: string;
+  serverValue?: string | boolean;
 }) {
-  const [value, setValue] = useState("");
+  console.log(serverValue);
+  const [value, setValue] = useState(serverValue || "");
   const [touched, setTouched] = useState(false);
 
   return (
     <div
       key={name}
-      className="flex align-middle text-left justify-evenly flex-col w-full md:flex-row md:justify-between md:w-3/4 md:mx-auto   mb-4"
+      className="flex align-middle text-left justify-evenly flex-col w-full md:flex-row md:justify-between  md:mx-auto   mb-4"
     >
       <label
         className="pb-2 font-sansBody capitalize md:self-center md:pb-0"
@@ -38,6 +41,7 @@ export default function Input({
           const value = event.currentTarget.value;
           setValue(value);
         }}
+        value={value as string}
         onBlur={() => setTouched(true)}
         required={isRequired && true}
         pattern={pattern}

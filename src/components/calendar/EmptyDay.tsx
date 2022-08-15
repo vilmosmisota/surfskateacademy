@@ -13,7 +13,7 @@ const EmptyDay = ({ day, hidePrevDays, getCurrentDayClass }: EmptyDayProps) => {
     >
       <header className="flex flex-col items-center">
         <p
-          className={`text-sm md:text-base font-sans font-black p-1 my-1 text-center   ${getCurrentDayClass()}`}
+          className={`text-sm md:text-base font-sans tracking-widest font-black p-1 my-1 text-center   ${getCurrentDayClass()}`}
         >
           {day.format("DD")}
         </p>

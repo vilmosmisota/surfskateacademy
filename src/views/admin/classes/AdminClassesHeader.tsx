@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import BackButton from "../../../components/buttons/BackButton";
 
 type FilterClassesProps = {
@@ -9,8 +10,14 @@ export default function AdminClassesHeader({
   cities,
   handleSelectFilter,
 }: FilterClassesProps) {
+  const publishOnClick = async () => {
+    const token = process.env.NEXT_PUBLIC_REVALIDATE_TOKEN as string;
+    const res = await fetch(`/api/revalidate?secret=${token}`).catch((err) =>
+      console.error(err)
+    );
+  };
   return (
-    <section className=" bg-orange relative rounded-t-lg py-2 px-5 flex flex-col-reverse items-center justify-evenly md:justify-evenly md:flex-row">
+    <section className=" bg-orange min-h-[150px] md:min-h-[100px] relative rounded-t-lg py-2 px-5 flex flex-col-reverse items-center justify-evenly md:justify-evenly md:flex-row">
       <div className="absolute top-2 left-2">
         <BackButton />
       </div>
@@ -22,20 +29,27 @@ export default function AdminClassesHeader({
           name="filter-class"
           id="filter-class"
           onChange={handleSelectFilter}
-          className="bg-orange rounded-lg border-black text-sm focus:border-red focus:ring-red"
+          className="bg-orange rounded-lg uppercase border-black text-sm focus:border-red focus:ring-red"
         >
           <option value="all">all</option>
           {cities.map((item, key) => {
             if (item === "") return;
             return (
               <option className="text-sm" key={key} value={item.toLowerCase()}>
-                {item}
+                {item.toUpperCase()}
               </option>
             );
           })}
         </select>
       </div>
-      <div></div>
+      <div className="">
+        <button
+          onClick={() => publishOnClick()}
+          className="uppercase underline underline-offset-2 font-black"
+        >
+          Publish Changes
+        </button>
+      </div>
     </section>
   );
 }

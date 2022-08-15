@@ -21,6 +21,12 @@
   }
 }
 
+@layer components {
+  .btn {
+    @apply flex font-sans uppercase  cursor-pointer items-center justify-center rounded-2xl  px-5 py-1 font-bold tracking-wide transition-all duration-300;
+  }
+}
+
 .swiper-button-next,
 .swiper-button-prev {
   color: #000 !important;

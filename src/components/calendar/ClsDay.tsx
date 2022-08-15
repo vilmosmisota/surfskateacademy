@@ -26,7 +26,7 @@ export default function ClsDay({
       >
         <header className="flex flex-col items-center">
           <p
-            className={`text-sm md:text-base font-sans font-black p-1 my-1 text-center   ${getCurrentDayClass()}`}
+            className={`text-sm  md:text-base font-sans font-black p-1 my-1 text-center tracking-widest   ${getCurrentDayClass()}`}
           >
             {day.format("DD")}
           </p>
@@ -34,8 +34,13 @@ export default function ClsDay({
         <div className="flex-1">
           {dayClasses.map((cls, idx) => (
             <div key={idx} className="text-center mb-2">
-              <p className={`text-xs mb-1 ${hideNAclasses(cls, day)}`}>
-                {cls.date.split("T")[1].substring(0, 5)}
+              <p
+                className={`text-xs md:tracking-wider mb-1 ${hideNAclasses(
+                  cls,
+                  day
+                )}`}
+              >
+                {cls.time.slice(0, -3)}
               </p>
             </div>
           ))}
@@ -58,7 +63,7 @@ const hideNAclasses = (cls: IClass, day: dayjs.Dayjs) => {
     return "text-darkBlue opacity-40";
   if (!cls.is_available) return "text-light opacity-40 line-through";
   if (cls.is_available && isPrevDay && isThisMonth) return "text-darkBlue";
-  return "text-light";
+  return "text-orange";
 };
 
 const useModal = (dayClasses: IClass[]) => {

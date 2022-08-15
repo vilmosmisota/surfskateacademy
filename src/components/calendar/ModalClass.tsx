@@ -65,12 +65,12 @@ export default function ModalClasses({
               {cls.is_available ? (
                 <Link href={`/booking/${cls.class_id}`}>
                   <button className=" bg-green cursor-pointer py-1 px-5 rounded-lg font-black shadow">
-                    {cls.date.split("T")[1].substring(0, 5)}
+                    {cls.time.slice(0, -3)}
                   </button>
                 </Link>
               ) : (
                 <button className=" bg-red opacity-40 cursor-default py-1 px-5 rounded-lg font-black shadow line-through">
-                  {cls.date.split("T")[1].substring(0, 5)}
+                  {cls.time.slice(0, -3)}
                 </button>
               )}
             </div>

@@ -14,6 +14,7 @@ export default function BookedItemView({ booking }: AdminBookedItemProps) {
     };
     setIsRead().catch((err) => console.error(err));
   }, [booking.booking_id, booking.is_read]);
+
   return (
     <main className="mt-16 relative  max-w-screen-md mx-auto px-4 lg:px-0">
       <button
@@ -50,14 +51,13 @@ export default function BookedItemView({ booking }: AdminBookedItemProps) {
 
         <div className="border-b-2 border-black border-opacity-50 mb-10 mx-auto max-w-md">
           <div className="flex justify-between items-center mb-3">
-            <p className="uppercase text-sm opacity-60">Class Date:</p>
+            <p className="uppercase text-sm opacity-60">Class Date and Time:</p>
             <p className="capitalize font-sans">
               {new Date(booking.class?.date || "").toLocaleDateString("en-GB", {
                 day: "numeric",
                 month: "numeric",
-                hour: "numeric",
-                minute: "numeric",
-              })}
+              })}{" "}
+              - {booking.class?.time.slice(0, -3)}
             </p>
           </div>
           <div className="flex justify-between items-center mb-3">

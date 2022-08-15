@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useCallback } from "react";
+import { useRouter } from "next/router";
 
 export const useWindowDimensions = () => {
   const [windowDimensions, setWindowDimensions] = useState({
@@ -24,4 +26,10 @@ export function useLogger(value: unknown) {
   useEffect(() => {
     console.log(value);
   }, [value]);
+}
+
+export function useRouterRefresh() {
+  const { asPath, replace } = useRouter();
+
+  return useCallback(() => replace(asPath), [asPath, replace]);
 }

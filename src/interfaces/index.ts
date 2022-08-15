@@ -1,6 +1,7 @@
 export interface IClass {
   class_id: string;
   date: string;
+  time: string;
   location: string;
   is_available: boolean;
   map_link?: string;
@@ -23,6 +24,7 @@ export interface IBooking {
   message?: string;
   class?: {
     date: string;
+    time: string;
     city: string;
     location: string;
   };
@@ -35,6 +37,7 @@ export interface IAdminBookingItem {
   is_read: boolean;
   class: {
     date: string;
+    time: string;
     city: string;
   };
 }

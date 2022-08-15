@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { IAdminBookingItem } from "../../../interfaces";
 import close from "../../../assets/icons/close.svg";
+import deleteIcon from "../../../assets/icons/delete.svg";
 import Image from "next/image";
 import { useState } from "react";
 import Modal from "../../../components/modals/Modal";
@@ -85,7 +86,7 @@ export default function AdminBookingsView({
           <button onClick={closeConfirmMsg} className="absolute top-1 right-2">
             <Image
               src={close as string}
-              alt="delete booking"
+              alt="close"
               className="bg-red rounded-md "
             />
           </button>
@@ -104,8 +105,6 @@ const BookingItem = ({ booking, openConfirmation }: BookingItemProps) => {
   const classDate = new Date(booking.class.date).toLocaleDateString("en-GB", {
     day: "numeric",
     month: "short",
-    hour: "numeric",
-    minute: "numeric",
   });
   const tob = new Date(booking.created_at).toLocaleDateString("en-GB", {
     day: "numeric",
@@ -123,7 +122,8 @@ const BookingItem = ({ booking, openConfirmation }: BookingItemProps) => {
       <Link href={`/admin/bookings/${booking.booking_id}`}>
         <div className="cursor-pointer w-max">
           <p className="uppercase underline underline-offset-4  font-bold">
-            {classDate} - {booking.class?.city}
+            {classDate} - {booking.class.time.slice(0, -3)} -{" "}
+            {booking.class?.city}
           </p>
           <p className="">{booking.email}</p>
 
@@ -139,7 +139,7 @@ const BookingItem = ({ booking, openConfirmation }: BookingItemProps) => {
           onClick={() => openConfirmation(booking.booking_id, booking.email)}
         >
           <Image
-            src={close as string}
+            src={deleteIcon as string}
             alt="delete booking"
             className="bg-red rounded-md"
           />

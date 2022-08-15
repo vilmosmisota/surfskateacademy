@@ -42,3 +42,21 @@ export const updateIsRead = async (
 
   return { res: "success" as string };
 };
+
+export const updateClass = async (
+  id: string | undefined,
+  payload: IClass
+): Promise<{
+  res: string;
+}> => {
+  const { error } = await supabase
+    .from<IClass>("class")
+    .update(payload)
+    .match({ class_id: id });
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return { res: "success" as string };
+};
