@@ -18,7 +18,6 @@ export default function Input({
   placeholder?: string;
   serverValue?: string | boolean;
 }) {
-  console.log(serverValue);
   const [value, setValue] = useState(serverValue || "");
   const [touched, setTouched] = useState(false);
 

@@ -36,6 +36,9 @@ export default function LoginView() {
     const { user } = await loginUser(payload);
 
     if (user !== null) {
+      router
+        .replace(router.asPath, undefined, { scroll: false })
+        .catch((e) => console.error(e));
       router.push("/admin");
     }
   };
