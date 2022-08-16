@@ -36,14 +36,10 @@ export const registerUser = async (props: AuthUserProps) => {
 };
 
 export const loginUser = async ({ email, password }: AuthUserProps) => {
-  const { user, session, error } = await supabase.auth.signIn({
+  const { user, error } = await supabase.auth.signIn({
     email,
     password,
   });
 
-  if (error) {
-    throw new Error(error.message);
-  }
-
-  return { user, session };
+  return { user, error };
 };

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 import Input from "../../components/forms/Input";
 import { loginUser } from "../../provider/auth";
@@ -24,22 +25,30 @@ const LOGIN_FIELDS = [
 
 export default function LoginView() {
   const router = useRouter();
+  const [isLoading, setLoading] = useState(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setLoading(true);
     const formData = new FormData(event.currentTarget);
     const { email, password } = Object.fromEntries(formData);
     const payload = {
       email: email.toString().toLowerCase(),
       password: password.toString(),
     };
-    const { user } = await loginUser(payload);
+    const { user, error } = await loginUser(payload);
+
+    if (error) {
+      setLoading(false);
+      alert(error.message);
+    }
 
     if (user !== null) {
       router
         .replace(router.asPath, undefined, { scroll: false })
         .catch((e) => console.error(e));
       router.push("/admin");
+      setLoading(false);
     }
   };
 
@@ -66,7 +75,7 @@ export default function LoginView() {
           className="mt-4  py-2 px-6 bg-green uppercase font-bold tracking-wider rounded-lg min-w-[125px] shadow"
           type="submit"
         >
-          login
+          {isLoading ? "...loading" : "login"}
         </button>
       </form>
     </main>
