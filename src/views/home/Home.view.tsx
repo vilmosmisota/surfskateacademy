@@ -1,13 +1,20 @@
+import Link from "next/link";
+import ReactMarkdown from "react-markdown";
 import MainHeader from "../../components/header/MainHeader";
 import Mainintro from "../../components/intro/MainIntro";
 import SliderClick from "../../components/slider/SliderClick";
-import SliderDrag from "../../components/slider/SliderDrag";
-import Collaborations from "./Collaborations";
 
-export default function HomeView() {
+import { IHomeContent } from "../../interfaces";
+import Highlights from "./Highlights";
+
+export default function HomeView({
+  homeContent,
+}: {
+  homeContent: IHomeContent;
+}) {
   return (
     <>
-      <MainHeader />
+      <MainHeader header={homeContent.header} />
       <section className="px-4 pt-2 -mt-10 mb-10 md:-mt-20 mx-auto lg:px-0 max-w-screen-lg text-right md:mb-14">
         <a
           href="https://yowsurf.com/"
@@ -19,22 +26,20 @@ export default function HomeView() {
         </a>
       </section>
       <main>
-        <Mainintro />
-        <SliderDrag />
-        <SliderClick />
-        <Collaborations />
-        <section className="px-4 mb-10 py-5 mx-4 lg:mx-auto rounded-lg lg:px-0 max-w-screen-lg bg-darkBlue text-center md:mb-20 min-h-[200px] flex flex-col items-center justify-center">
-          <h2 className="max-w-sm lg:max-w-lg mx-auto text-light font-normal  tracking-wide mb-10">
-            <span className="uppercase text-red font-black">One-to-one</span>{" "}
-            and{" "}
-            <span className="uppercase text-red font-black">
-              Group coaching
-            </span>{" "}
-          </h2>
-          <button className="bg-orange w-full p-2 font-black uppercase tracking-wide font-sans rounded-lg max-w-[200px]">
-            Read more
-          </button>
+        <Mainintro intro={homeContent.intro} />
+        <SliderClick carousel={homeContent.carousel} />
+
+        <section className="px-4 mb-10 py-5 mx-4 md:py-10 lg:mx-auto rounded-lg lg:px-0 max-w-screen-lg bg-orange text-center md:mb-20 min-h-[200px] flex items-center justify-center flex-col">
+          <ReactMarkdown className="cta-text mb-5">
+            {homeContent.callToAction.fields.description}
+          </ReactMarkdown>
+          <Link href={homeContent.callToAction.fields.buttonDestination}>
+            <button className="btn border-2 border-black text-black">
+              {homeContent.callToAction.fields.buttonLabel}
+            </button>
+          </Link>
         </section>
+        <Highlights highlights={homeContent.highlights} />
       </main>
     </>
   );

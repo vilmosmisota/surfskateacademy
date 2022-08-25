@@ -41,3 +41,68 @@ export interface IAdminBookingItem {
     city: string;
   };
 }
+
+export interface IImage {
+  fields: {
+    title: string;
+    file: {
+      url: string;
+      details: {
+        image: {
+          width: number;
+          height: number;
+        };
+      };
+    };
+  };
+}
+
+export interface IHighlights {
+  fields: {
+    title: string;
+    text: string;
+    featuredImage: IImage;
+    imagelists?: IImage[];
+  };
+}
+
+export interface ICallToAction {
+  fields: {
+    buttonLabel: string;
+    buttonDestination: string;
+    description: string;
+    title: string;
+  };
+}
+
+export interface IHeader {
+  fields: {
+    heading: string;
+    title: string;
+    image: IImage;
+  };
+}
+
+export interface ICarousel {
+  fields: {
+    contentTitle: string;
+    description: string;
+    image: IImage;
+  };
+}
+
+export interface IIntro {
+  fields: {
+    introText: string;
+    buttonLabel: string;
+    buttonDestination: string;
+  };
+}
+
+export interface IHomeContent {
+  callToAction: ICallToAction;
+  carousel: ICarousel[];
+  header: IHeader;
+  intro: IIntro;
+  highlights: IHighlights[];
+}

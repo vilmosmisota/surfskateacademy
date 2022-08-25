@@ -7,10 +7,10 @@
     @apply font-sans text-2xl font-black tracking-wide uppercase md:text-4xl md:leading-normal;
   }
   h2 {
-    @apply font-sans text-lg font-semibold capitalize md:text-3xl;
+    @apply font-sans text-lg font-semibold capitalize md:text-2xl;
   }
   h3 {
-    @apply text-lg font-bold capitalize tracking-wide md:text-xl;
+    @apply text-lg font-black capitalize tracking-wide md:text-xl;
   }
   p {
     @apply font-sansBody font-normal leading-relaxed tracking-wide;
@@ -23,7 +23,22 @@
 
 @layer components {
   .btn {
-    @apply flex font-sans uppercase  cursor-pointer items-center justify-center rounded-2xl  px-5 py-1 font-bold tracking-wide transition-all duration-300;
+    @apply flex font-sans uppercase  cursor-pointer items-center justify-center rounded-2xl px-5 py-1 text-sm md:text-base  md:px-7 md:py-2  tracking-wide font-black transition-all duration-300;
+  }
+
+  .intro h2 {
+    @apply max-w-sm uppercase lg:max-w-lg md:leading-10 leading-7 mx-auto text-light font-normal  tracking-wider;
+  }
+
+  .intro h2 strong {
+    @apply uppercase text-red font-black tracking-wider;
+  }
+  .cta-text h2 {
+    @apply max-w-sm uppercase lg:max-w-lg md:leading-10 leading-7 mx-auto text-black font-normal  tracking-wider;
+  }
+
+  .cta-text h2 strong {
+    @apply uppercase text-black font-black tracking-wider;
   }
 }
 

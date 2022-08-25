@@ -30,8 +30,8 @@ export default function SliderClickBtn({
       }}
       key={id}
       className={`${
-        isActive ? "bg-red " : ""
-      }w-5 h-5 mx-1 border-2 rounded-full border-red transition-all duration-300 ease-in-out`}
+        isActive ? "bg-orange shadow " : ""
+      }w-5 h-5 mx-1 border-2 rounded-full border-orange transition-all duration-300 ease-in-out`}
     ></button>
   );
 }

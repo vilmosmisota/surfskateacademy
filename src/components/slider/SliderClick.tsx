@@ -1,52 +1,43 @@
-import sample from "../../assets/img/sample.jpg";
 import Image from "next/image";
 import { useState } from "react";
 import SliderClickBtn from "./SliderClickBtn";
+import { ICarousel } from "../../interfaces";
 
-const contents = [
-  {
-    id: 1,
-    img: sample,
-    title: "At the surfskate academy",
-    content:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium, error? Est, excepturi placeat cum provident ea quibusdam aspernatur. Itaque eius, et soluta vel facilis quidem cumque excepturi iure repellat nam!",
-  },
-  {
-    id: 2,
-    img: sample,
-    title: "Lorem Ipsum Hello",
-    content:
-      " placeat cum provident ea quibusdam aspernatur. Itaque eius, et soluta vel facilis quidem cumque excepturi iure repellat nam!",
-  },
-];
-
-export default function SliderClick() {
+export default function SliderClick({ carousel }: { carousel: ICarousel[] }) {
   const [position, setPosition] = useState(0);
   const handleClick = (newposition: number) => setPosition(newposition);
 
   return (
     <section className="  mx-auto lg:px-0 max-w-screen-lg mb-10 md:mb-20">
       <article className="flex flex-col-reverse lg:flex-row">
-        <div className="w-full -mt-[10%] z-0 lg:mt-14">
+        <div className="w-full -mt-[10%] z-0 lg:mt-14 lg:-mr-5">
           <Image
-            src={contents[position].img}
-            alt="location"
+            src={`https:${carousel[position].fields.image.fields.file.url}`}
+            width={
+              carousel[position].fields.image.fields.file.details.image.width
+            }
+            height={
+              carousel[position].fields.image.fields.file.details.image.height
+            }
+            alt={carousel[position].fields.image.fields.title}
             layout="responsive"
           />
         </div>
-        <div className="bg-darkBlue min-h-[450px] flex flex-col justify-between rounded-lg px-6 mx-4 py-12 shadow z-10 h-min lg:-ml-6">
-          <div className="max-w-lg mx-auto">
-            <h2 className="uppercase font-black max-w-[150px] text-red pb-2 tracking-wide">
-              {contents[position].title}
+        <div className="bg-darkBlue relative min-h-[330px]  lg:min-h-[390px] flex flex-col justify-center rounded-lg px-6 mx-4 md:pt-12 pb-8 shadow z-10 h-min lg:mx-0">
+          <div className="max-w-2xl w-full mx-auto ">
+            <h2 className="uppercase font-black  text-red pb-2 tracking-wide lg:text-2xl">
+              {carousel[position].fields.contentTitle}
             </h2>
-            <p className="text-light">{contents[position].content}</p>
+            <p className="text-light text-sm md:text-base">
+              {carousel[position].fields.description}
+            </p>
           </div>
-          <div className="flex justify-center align-middle">
-            {contents.map((btn, i) => {
+          <div className="absolute bottom-5 left-2/4 -translate-x-2/4 flex justify-center align-middle pt-5">
+            {carousel.map((btn, i) => {
               return (
                 <SliderClickBtn
-                  key={btn.id}
-                  id={btn.id}
+                  key={btn.fields.contentTitle}
+                  id={i}
                   index={i}
                   position={position}
                   handleClick={handleClick}
