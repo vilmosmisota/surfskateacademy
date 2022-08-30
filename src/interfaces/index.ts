@@ -68,6 +68,14 @@ export interface IHighlights {
   };
 }
 
+export interface IShortBio {
+  fields: {
+    image: IImage;
+    text: string;
+    title: string;
+  };
+}
+
 export interface ICallToAction {
   fields: {
     buttonLabel: string;
@@ -107,4 +115,5 @@ export interface IHomeContent {
   header: IHeader;
   intro: IIntro;
   highlights: IHighlights[];
+  shortBio: IShortBio;
 }

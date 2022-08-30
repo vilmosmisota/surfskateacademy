@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { IContentsBlock } from "../../interfaces";
+import { animateItemsUp, animateUp } from "../../utils/animations";
 
 export default function ContentsBlock({
   contentsBlock,
@@ -39,7 +40,7 @@ export default function ContentsBlock({
               className="bg-darkBlue relative min-h-[330px]  lg:min-h-[390px] flex flex-col justify-center rounded-lg px-6 mx-4 md:pt-12 pb-8 shadow z-10 h-min lg:mx-0"
             >
               <motion.div
-                variants={animateItems}
+                variants={animateItemsUp}
                 className="max-w-2xl w-full mx-auto "
               >
                 <h2 className="uppercase font-black  text-red pb-2 tracking-wide lg:text-2xl">
@@ -56,39 +57,3 @@ export default function ContentsBlock({
     </section>
   );
 }
-
-// animations
-
-const animateUp = {
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      type: "spring",
-      stiffness: 110,
-      staggerChildren: 0.8,
-    },
-  },
-  hidden: {
-    y: 100,
-    opacity: 0,
-  },
-};
-
-const animateItems = {
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      type: "spring",
-      damping: 11,
-      stiffness: 110,
-    },
-  },
-  hidden: {
-    y: 100,
-    opacity: 0,
-  },
-};

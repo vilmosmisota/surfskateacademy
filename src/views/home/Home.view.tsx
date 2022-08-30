@@ -6,6 +6,8 @@ import ContentsBlock from "./ContentsBlock";
 import Supporter from "./Supporter";
 import CallToAction from "./CallToAction";
 
+import ShortBio from "./ShortBio";
+
 export default function HomeView({
   homeContent,
 }: {
@@ -20,6 +22,7 @@ export default function HomeView({
         <ContentsBlock contentsBlock={homeContent.carousel} />
         <CallToAction callToAction={homeContent.callToAction} />
         <Highlights highlights={homeContent.highlights} />
+        <ShortBio shortBio={homeContent.shortBio} />
       </main>
     </>
   );

@@ -3,6 +3,7 @@ import Carousel from "nuka-carousel";
 import { useWindowDimensions } from "../../utils/hooks";
 import { IHighlights } from "../../interfaces";
 import { motion } from "framer-motion";
+import { animateIn, animateItemsIn } from "../../utils/animations";
 
 export default function Highlights({
   highlights,
@@ -17,7 +18,7 @@ export default function Highlights({
       initial={"hidden"}
       whileInView={"show"}
       viewport={{ once: true }}
-      className="py-5 mx-4 lg:mx-auto md:mb-20 lg:px-0 max-w-screen-lg text-center"
+      className="py-5 mx-4 lg:mx-auto mb-10 md:mb-20 lg:px-0 max-w-screen-lg text-center"
     >
       <motion.h2
         variants={animateItemsIn}
@@ -36,7 +37,7 @@ export default function Highlights({
             return (
               <article
                 key={item.fields.title}
-                className="bg-beige pb-5 w-full mb-5 mx-auto h-fit overflow-hidden max-w-sm rounded-lg  text-center shadow"
+                className="bg-beige pb-5 w-full mb-5 mx-auto touch-none h-fit overflow-hidden max-w-sm rounded-lg  text-center shadow"
               >
                 <div>
                   <Image
@@ -71,29 +72,3 @@ export default function Highlights({
     </motion.section>
   );
 }
-
-const animateIn = {
-  show: {
-    opacity: 1,
-    transition: {
-      duration: 0.8,
-      staggerChildren: 0.8,
-    },
-  },
-  hidden: {
-    opacity: 0,
-  },
-};
-
-const animateItemsIn = {
-  show: {
-    opacity: 1,
-
-    transition: {
-      duration: 0.8,
-    },
-  },
-  hidden: {
-    opacity: 0,
-  },
-};
