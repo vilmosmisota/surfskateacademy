@@ -12,10 +12,13 @@ module.exports = {
       lightBlue: "#E2E8F0",
       darkBlue: "#475569",
       orange: "#FDE047",
+      orange400: "#facc15",
+      orange100: "#fef9c3",
       beige: "#FFEDD5",
       green: "#BFFD47",
       red: "#FD8547",
       black: "#000",
+      transparent: "#ffffff00",
     },
     fontFamily: {
       sans: "'Raleway', sans-serif",

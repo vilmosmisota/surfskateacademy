@@ -22,11 +22,11 @@ export default function ClsDay({
     <>
       <div
         onClick={open}
-        className={`flex-col rounded-sm min-h-[100px] hover:shadow transition-all cursor-pointer overflow-hidden ${hidePrevDays()}`}
+        className={`flex-col rounded-md min-h-[100px] hover:shadow transition-all cursor-pointer overflow-hidden ${hidePrevDays()}`}
       >
         <header className="flex flex-col items-center">
           <p
-            className={`text-sm  md:text-base font-sans font-black p-1 my-1 text-center tracking-widest   ${getCurrentDayClass()}`}
+            className={`text-sm  md:text-base font-sans font-black p-1 mb-1 text-center tracking-widest   ${getCurrentDayClass()}`}
           >
             {day.format("DD")}
           </p>

@@ -23,7 +23,15 @@
 
 @layer components {
   .btn {
-    @apply flex font-sans uppercase  cursor-pointer items-center justify-center rounded-2xl px-5 py-1 text-sm md:text-base  md:px-7 md:py-2  tracking-wide font-black transition-all duration-300;
+    @apply mx-auto font-sans uppercase  focus:outline-none   cursor-pointer  rounded-2xl px-5 py-1 text-xs md:text-sm shadow  md:px-7 md:py-2  tracking-wide font-black touch-none select-none transition-all ease-in-out duration-200;
+  }
+
+  .primary-btn {
+    @apply bg-orange focus:ring-opacity-0 active:shadow-none hover:bg-orange400 active:bg-orange100;
+  }
+
+  .secondary-btn {
+    @apply border-2 focus:ring-opacity-0 active:shadow-none hover:bg-orange400 active:bg-orange100;
   }
 
   .intro h2 {
@@ -47,14 +55,26 @@
   color: #000 !important;
 }
 
-.img-overlay::after {
+.slider-control-bottomcenter {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  content: "";
+  bottom: -35px;
+}
+
+.slider-control-bottomcenter .paging-item button {
+  background: transparent !important;
+  border-radius: 50%;
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+  margin: 0 0.25rem;
+  border: 3px solid rgb(253 133 71) !important;
+}
+
+.slider-control-bottomcenter .paging-item.active button {
+  background: rgb(253 133 71) !important;
+}
+
+.slider-control-bottomcenter svg {
+  display: none !important;
 }
 
 .location {

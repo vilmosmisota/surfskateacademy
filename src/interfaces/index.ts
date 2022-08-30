@@ -60,7 +60,9 @@ export interface IImage {
 export interface IHighlights {
   fields: {
     title: string;
-    text: string;
+    slug: string;
+    introText: string;
+    mainText: string;
     featuredImage: IImage;
     imagelists?: IImage[];
   };
@@ -83,7 +85,7 @@ export interface IHeader {
   };
 }
 
-export interface ICarousel {
+export interface IContentsBlock {
   fields: {
     contentTitle: string;
     description: string;
@@ -101,7 +103,7 @@ export interface IIntro {
 
 export interface IHomeContent {
   callToAction: ICallToAction;
-  carousel: ICarousel[];
+  carousel: IContentsBlock[];
   header: IHeader;
   intro: IIntro;
   highlights: IHighlights[];
