@@ -48,6 +48,9 @@
   .cta-text h2 strong {
     @apply uppercase text-black font-black tracking-wider;
   }
+  .markdown-text p {
+    @apply text-base font-sansBody mb-5;
+  }
 }
 
 .swiper-button-next,

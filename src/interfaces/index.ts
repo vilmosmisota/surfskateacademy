@@ -68,6 +68,15 @@ export interface IHighlights {
   };
 }
 
+export interface IHighlightsPost {
+  title: string;
+  slug: string;
+  introText: string;
+  mainText: string;
+  featuredImage: IImage;
+  imagelists?: IImage[];
+}
+
 export interface IShortBio {
   fields: {
     image: IImage;

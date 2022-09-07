@@ -4,6 +4,7 @@ import { useWindowDimensions } from "../../utils/hooks";
 import { IHighlights } from "../../interfaces";
 import { motion } from "framer-motion";
 import { animateIn, animateItemsIn } from "../../utils/animations";
+import Link from "next/link";
 
 export default function Highlights({
   highlights,
@@ -62,7 +63,11 @@ export default function Highlights({
                   </p>
                 </div>
                 <div>
-                  <button className="btn primary-btn text-sm">see more</button>
+                  <Link href={`/highlights/${item.fields.slug}`}>
+                    <button className="btn primary-btn text-sm">
+                      see more
+                    </button>
+                  </Link>
                 </div>
               </article>
             );

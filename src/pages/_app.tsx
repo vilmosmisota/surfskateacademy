@@ -4,8 +4,9 @@ import Layout from "../components/layout/Layout";
 import { useEffect } from "react";
 import { supabase } from "../libs/supabase";
 import { AuthChangeEvent, Session } from "@supabase/supabase-js";
+import { AnimatePresence, motion } from "framer-motion";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps, router }: AppProps) {
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (event, session) => {
@@ -30,9 +31,26 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <AnimatePresence exitBeforeEnter>
+      <Layout>
+        <motion.div
+          key={router.route}
+          initial="pageInitial"
+          animate="pageAnimate"
+          exit="pageExit"
+          variants={{
+            pageInitial: { opacity: 0, transition: { duration: 0.5 } },
+            pageAnimate: { opacity: 1, transition: { duration: 0.5 } },
+            pageExit: {
+              opacity: 0,
+              transition: { duration: 0.5 },
+            },
+          }}
+        >
+          <Component {...pageProps} key={router.route} />
+        </motion.div>
+      </Layout>
+    </AnimatePresence>
   );
 }
 
