@@ -5,7 +5,6 @@ import Highlights from "./Highlights";
 import ContentsBlock from "./ContentsBlock";
 import Supporter from "./Supporter";
 import CallToAction from "./CallToAction";
-import { motion } from "framer-motion";
 
 import ShortBio from "./ShortBio";
 

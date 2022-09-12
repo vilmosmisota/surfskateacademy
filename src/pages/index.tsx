@@ -5,6 +5,7 @@ import { IHomeContent } from "../interfaces";
 
 export type HomeProps = {
   homeContent: IHomeContent;
+  key: string;
 };
 
 export default function Home({ homeContent }: HomeProps) {

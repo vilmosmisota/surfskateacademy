@@ -31,11 +31,11 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   }, []);
 
   return (
-    <AnimatePresence exitBeforeEnter initial={false}>
-      <Layout>
+    <Layout>
+      <AnimatePresence exitBeforeEnter>
         <motion.div
           key={router.route}
-          initial="pageInitial"
+          // initial="pageInitial"
           animate="pageAnimate"
           exit="pageExit"
           variants={{
@@ -49,8 +49,8 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         >
           <Component {...pageProps} key={router.route} />
         </motion.div>
-      </Layout>
-    </AnimatePresence>
+      </AnimatePresence>
+    </Layout>
   );
 }
 
