@@ -12,10 +12,10 @@ import youtube from "../../assets/icons/youtube-black.svg";
 
 export default function Navbar() {
   const [isOpen, setOpen] = useState(false);
-  const paths = ["about", "classes", "gallery", "booking"];
+  const paths = ["about", "classes", "highlights", "booking"];
 
   return (
-    <nav className="fixed top-0 z-50 h-14 w-full py-5 md:bg-lightBlue md:bg-opacity-80 md:backdrop-blur-lg ">
+    <nav className="absolute top-0 z-50 h-14 w-full py-5 md:bg-lightBlue md:bg-opacity-80 md:backdrop-blur-lg ">
       <div className="container mx-auto flex h-full max-w-screen-lg items-center justify-between  px-4 lg:px-0 font-sans font-semibold uppercase">
         <Link href="/" passHref>
           <div className="w-20 md:w-24 cursor-pointer relative">

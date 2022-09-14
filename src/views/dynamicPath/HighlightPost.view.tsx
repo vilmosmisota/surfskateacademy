@@ -1,6 +1,5 @@
 import Image from "next/future/image";
 import ReactMarkdown from "react-markdown";
-import BackButton from "../../components/buttons/BackButton";
 import { IHighlightsPost } from "../../interfaces";
 
 export default function HighlightPost({ post }: { post: IHighlightsPost }) {
@@ -21,9 +20,6 @@ export default function HighlightPost({ post }: { post: IHighlightsPost }) {
         </div>
       </header>
       <main className="mx-auto lg:px-0 max-w-screen-lg  my-10 md:mb-20">
-        <div className="mb-5">
-          <BackButton />
-        </div>
         <section className="mb-10">
           <ReactMarkdown className="markdown-text max-w-2xl mx-auto px-4">
             {post.mainText}

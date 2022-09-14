@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { animateItemsUp, animateUp } from "../../utils/animations";
+import DelayedLinkBtn from "../buttons/DelayedLinkBtn";
 
 export default function Mainintro({ intro }: { intro: IIntro }) {
   return (
@@ -19,11 +20,12 @@ export default function Mainintro({ intro }: { intro: IIntro }) {
         </ReactMarkdown>
       </motion.div>
       <motion.div variants={animateItemsUp}>
-        <Link href={intro.fields.buttonDestination}>
-          <button className="btn primary-btn ">
-            {intro.fields.buttonLabel}
-          </button>
-        </Link>
+        <DelayedLinkBtn
+          href={intro.fields.buttonDestination}
+          theme="primary-btn"
+        >
+          {intro.fields.buttonLabel}
+        </DelayedLinkBtn>
       </motion.div>
     </motion.section>
   );

@@ -5,6 +5,7 @@ import { IHighlights } from "../../interfaces";
 import { motion } from "framer-motion";
 import { animateIn, animateItemsIn } from "../../utils/animations";
 import Link from "next/link";
+import DelayedLinkBtn from "../../components/buttons/DelayedLinkBtn";
 
 export default function Highlights({
   highlights,
@@ -25,14 +26,14 @@ export default function Highlights({
         variants={animateItemsIn}
         className="text-center font-black tracking-wide uppercase mb-6 md:mb-8"
       >
-        Some of our collaborations
+        Lorem ipsum sample text
       </motion.h2>
       <motion.div variants={animateItemsIn}>
         <Carousel
           renderCenterLeftControls={null}
           renderCenterRightControls={null}
           cellSpacing={30}
-          swiping={false}
+          dragging={false}
           slidesToShow={width < 768 || highlights.length <= 1 ? 1 : 3}
         >
           {highlights.map((item) => {
@@ -66,11 +67,12 @@ export default function Highlights({
                   </p>
                 </div>
                 <div>
-                  <Link href={`/highlights/${item.fields.slug}`}>
-                    <button className="btn primary-btn text-sm">
-                      see more
-                    </button>
-                  </Link>
+                  <DelayedLinkBtn
+                    href={`/highlights/${item.fields.slug}`}
+                    theme="primary-btn text-sm"
+                  >
+                    see more
+                  </DelayedLinkBtn>
                 </div>
               </article>
             );
