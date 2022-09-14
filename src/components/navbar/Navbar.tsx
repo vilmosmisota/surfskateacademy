@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import Link from "next/link";
 import { useState } from "react";
 import burger from "../../assets/icons/burger.svg";
@@ -18,8 +18,8 @@ export default function Navbar() {
     <nav className="fixed top-0 z-50 h-14 w-full py-5 md:bg-lightBlue md:bg-opacity-80 md:backdrop-blur-lg ">
       <div className="container mx-auto flex h-full max-w-screen-lg items-center justify-between  px-4 lg:px-0 font-sans font-semibold uppercase">
         <Link href="/" passHref>
-          <div className="w-20 md:w-24 cursor-pointer">
-            <Image src={logo as string} alt="logo" layout="responsive" />
+          <div className="w-20 md:w-24 cursor-pointer relative">
+            <Image src={logo as string} alt="logo" sizes="10vw" />
           </div>
         </Link>
         <motion.ul
@@ -50,11 +50,7 @@ export default function Navbar() {
                     key={icon.link}
                   >
                     <div className="w-12 px-2 ">
-                      <Image
-                        src={icon.icon}
-                        alt={icon.alt}
-                        layout="responsive"
-                      />
+                      <Image src={icon.icon} alt={icon.alt} sizes="10vw" />
                     </div>
                   </a>
                 ))}
@@ -75,19 +71,15 @@ export default function Navbar() {
                 setOpen(false);
               }}
             >
-              <Image
-                src={closeIcon as string}
-                alt="close"
-                layout="responsive"
-              />
+              <Image src={closeIcon as string} alt="close" sizes="10vw" />
             </button>
           )}
         </motion.ul>
         <button
-          className="w-7 border-0 focus:border-0 md:hidden"
+          className="w-7 relative border-0 focus:border-0 md:hidden"
           onClick={() => setOpen(!isOpen)}
         >
-          <Image src={burger as string} alt="logo" layout="responsive" />
+          <Image src={burger as string} alt="logo" sizes="10vw" />
         </button>
       </div>
     </nav>

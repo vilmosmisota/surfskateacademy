@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import { motion } from "framer-motion";
 import { IContentsBlock } from "../../interfaces";
 import { animateItemsUp, animateUp } from "../../utils/animations";
@@ -28,7 +28,8 @@ export default function ContentsBlock({
                 width={content.fields.image.fields.file.details.image.width}
                 height={content.fields.image.fields.file.details.image.height}
                 alt={content.fields.image.fields.title}
-                layout="responsive"
+                sizes="(max-width: 1024px) 100vw,
+                50vw"
               />
             </div>
 

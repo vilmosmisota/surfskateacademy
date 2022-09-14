@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import Carousel from "nuka-carousel";
 import { useWindowDimensions } from "../../utils/hooks";
 import { IHighlights } from "../../interfaces";
@@ -32,6 +32,7 @@ export default function Highlights({
           renderCenterLeftControls={null}
           renderCenterRightControls={null}
           cellSpacing={30}
+          swiping={false}
           slidesToShow={width < 768 || highlights.length <= 1 ? 1 : 3}
         >
           {highlights.map((item) => {
@@ -49,9 +50,11 @@ export default function Highlights({
                     height={
                       item.fields.featuredImage.fields.file.details.image.height
                     }
-                    layout="responsive"
-                    objectFit="cover"
+                    sizes="(max-width: 470px) 90vw,
+                            (max-width: 765px) 70vw,
+                    33vw"
                     alt=""
+                    className="object-fill"
                   />
                 </div>
                 <div className="  px-2 py-5  h-[180px]">

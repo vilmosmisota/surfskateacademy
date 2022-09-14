@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import logoOrange from "../../assets/icons/logo-orange.svg";
 import fb from "../../assets/icons/fb.svg";
 import ig from "../../assets/icons/ig.svg";
@@ -40,7 +40,7 @@ export default function Footer() {
                 key={icon.link}
               >
                 <div className="w-12 px-2">
-                  <Image src={icon.icon} alt={icon.alt} layout="responsive" />
+                  <Image src={icon.icon} alt={icon.alt} />
                 </div>
               </a>
             ))}
@@ -82,14 +82,18 @@ export default function Footer() {
         </article>
       </section>
       <div className="w-52 mx-auto mb-10">
-        <Image src={logoOrange as string} alt="logo" layout="responsive" />
+        <Image
+          src={logoOrange as string}
+          alt="logo"
+          className="w-full h-auto"
+        />
       </div>
       <div className="mx-4 lg:mx-auto lg:px-0 max-w-screen-lg pb-5 md: flex justify-between">
         <small className="block text-light">
           copyright © from 2021 <br /> The SurfSkate Academy All rights reserved
         </small>
         <br />
-        <small className="block text-light">
+        <small className="pl-2 block text-light">
           website built by Vilmos Misota
         </small>
       </div>

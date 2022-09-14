@@ -1,9 +1,10 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import { IHeader } from "../../interfaces";
 import { motion } from "framer-motion";
 
 export default function MainHeader({ header }: { header: IHeader }) {
   const image = header.fields.image;
+
   return (
     <header className="mt-16  relative max-h-screen mb-10 md:mb-20 ">
       <section className="flex lg:h-[80vh] px-4 lg:px-0 align-top max-w-screen-lg mx-auto justify-start flex-col-reverse lg:justify-between lg:flex-row lg:align-middle">
@@ -21,15 +22,17 @@ export default function MainHeader({ header }: { header: IHeader }) {
           animate="show1"
           initial="hidden"
           exit="hidden"
-          className="w-full max-w-[480px] lg:m-0 mx-auto lg:self-end relative z-20 shadow "
+          className="w-full max-w-[480px] lg:m-0 mx-auto lg:self-end relative z-20 "
         >
           <Image
             src={`https:${image.fields.file.url}`}
             width={image.fields.file.details.image.width}
             height={image.fields.file.details.image.height}
             alt={image.fields.title}
-            layout="responsive"
-            className=""
+            sizes="(max-width: 768px) 90vw,
+            (max-width: 1000px) 70vw,
+            40vw"
+            className="shadow"
           />
         </motion.div>
       </section>

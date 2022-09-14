@@ -51,6 +51,18 @@
   .markdown-text p {
     @apply text-base font-sansBody mb-5;
   }
+
+  .markdown-text h2 {
+    @apply pb-5;
+  }
+
+  .res-img {
+    @apply w-full h-auto;
+  }
+
+  .cover-img {
+    @apply object-cover h-full w-full;
+  }
 }
 
 .swiper-button-next,

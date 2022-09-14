@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import { IShortBio } from "../../interfaces";
 import { motion } from "framer-motion";
 import { animateItemsUp, animateUp } from "../../utils/animations";
@@ -13,8 +13,10 @@ export default function ShortBio({ shortBio }: { shortBio: IShortBio }) {
           width={image.fields.file.details.image.width}
           height={image.fields.file.details.image.height}
           alt={image.fields.title}
-          layout="responsive"
           className=""
+          sizes="(max-width: 510px) 90vw,
+                            (max-width: 900px) 80vw,
+                    60vw"
         />
       </div>
       <motion.div
