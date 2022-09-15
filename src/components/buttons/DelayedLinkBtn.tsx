@@ -13,26 +13,31 @@ export default function DelayedLinkBtn({
   theme,
 }: DelayedLinkBtnProps) {
   const router = useRouter();
-  const [isClicked, setClicked] = useState(false);
+  const [isRouteChanged, setRouteChanged] = useState(false);
 
   useEffect(() => {
-    if (isClicked === false) return;
+    if (isRouteChanged === false) return;
 
     const timer = setTimeout(() => {
       window.scrollTo({ top: 0, left: 0 });
-    }, 490);
+    }, 400);
     return () => {
       clearTimeout(timer);
-      setClicked(false);
     };
-  }, [isClicked]);
+  }, [isRouteChanged]);
+
+  useEffect(() => {
+    router.events.on("routeChangeComplete", () => setRouteChanged(true));
+    return () => {
+      router.events.off("routeChangeComplete", () => setRouteChanged(false));
+    };
+  }, []);
 
   const handleClick = (event: SyntheticEvent) => {
     event.preventDefault();
     router
       .push(href, undefined, { scroll: false })
       .catch((err) => console.error(err));
-    setClicked(true);
   };
   return (
     <button className={`btn ${theme} `} onClick={handleClick}>
