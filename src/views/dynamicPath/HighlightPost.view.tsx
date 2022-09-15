@@ -5,7 +5,7 @@ import { IHighlightsPost } from "../../interfaces";
 export default function HighlightPost({ post }: { post: IHighlightsPost }) {
   return (
     <>
-      <header className="mt-16 relative  max-w-screen-lg mx-auto  ">
+      <header className="mt-4 relative  max-w-screen-lg mx-auto  ">
         <div className="h-[250px] w-full px-4 lg:px-0 brightness-50">
           <Image
             src={`https:${post.featuredImage.fields.file.url}`}

@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 type NavlinksProps = {
   path: string;
-  handleClick: () => void;
+  handleClick?: () => void;
 };
 
 export default function Navlinks({ path, handleClick }: NavlinksProps) {
@@ -13,7 +13,7 @@ export default function Navlinks({ path, handleClick }: NavlinksProps) {
       key={path}
       className="flex w-full justify-center  border-opacity-5 py-5 md:w-fit md:border-none md:py-0 "
     >
-      <Link href={`/${path}`} passHref scroll={true}>
+      <Link href={`/${path}`} passHref>
         <a
           onClick={handleClick}
           className={`${

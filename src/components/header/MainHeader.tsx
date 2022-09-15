@@ -6,8 +6,8 @@ export default function MainHeader({ header }: { header: IHeader }) {
   const image = header.fields.image;
 
   return (
-    <header className="mt-16  relative max-h-screen mb-10 md:mb-20 ">
-      <section className="flex lg:h-[80vh] px-4 lg:px-0 align-top max-w-screen-lg mx-auto justify-start flex-col-reverse lg:justify-between lg:flex-row lg:align-middle">
+    <header className="mt-4 relative mb-10 md:mb-20 ">
+      <section className="flex  px-4 lg:px-0 align-top max-w-screen-lg mx-auto justify-start flex-col-reverse lg:justify-between lg:flex-row lg:align-middle">
         <motion.div
           variants={fadeInAnimation}
           animate="show05"
@@ -32,7 +32,8 @@ export default function MainHeader({ header }: { header: IHeader }) {
             sizes="(max-width: 768px) 90vw,
             (max-width: 1000px) 70vw,
             40vw"
-            className="shadow"
+            className="shadow res-img"
+            priority={true}
           />
         </motion.div>
       </section>

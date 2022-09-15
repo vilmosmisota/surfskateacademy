@@ -3,7 +3,7 @@ import sample from "../../assets/sample/bookin.jpg";
 
 export default function BookingHeader() {
   return (
-    <header className="mt-16 relative  max-w-screen-lg mx-auto  ">
+    <header className="mt-4 relative  max-w-screen-lg mx-auto  ">
       <div className="h-[250px] w-full img-overlay">
         <Image
           src={sample}

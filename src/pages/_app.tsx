@@ -35,7 +35,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
       <AnimatePresence exitBeforeEnter>
         <motion.div
           key={router.route}
-          // initial="pageInitial"
+          initial="pageInitial"
           animate="pageAnimate"
           exit="pageExit"
           variants={{
