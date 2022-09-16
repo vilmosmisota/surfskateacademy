@@ -13,15 +13,19 @@ export default function HomeView({
 }: {
   homeContent: IHomeContent;
 }) {
+  const highlights = homeContent.highlights.slice(0, 6);
   return (
     <>
-      <MainHeader header={homeContent.header} />
+      <MainHeader
+        title={homeContent.header.fields.heading}
+        image={homeContent.header.fields.image}
+      />
       <Supporter />
       <main>
         <Mainintro intro={homeContent.intro} />
         <ContentsBlock contentsBlock={homeContent.carousel} />
         <CallToAction callToAction={homeContent.callToAction} />
-        <Highlights highlights={homeContent.highlights} />
+        <Highlights highlights={highlights} />
         <ShortBio shortBio={homeContent.shortBio} />
       </main>
     </>

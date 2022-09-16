@@ -63,8 +63,13 @@ export interface IHighlights {
     slug: string;
     introText: string;
     mainText: string;
-    featuredImage: IImage;
+    previewImage: IImage;
     imagelists?: IImage[];
+    featuredImage?: IImage;
+    isFeatured?: boolean;
+  };
+  sys: {
+    createdAt: string;
   };
 }
 
@@ -73,8 +78,10 @@ export interface IHighlightsPost {
   slug: string;
   introText: string;
   mainText: string;
-  featuredImage: IImage;
+  previewImage: IImage;
   imagelists?: IImage[];
+  isFeatured?: boolean;
+  featuredImage?: IImage;
 }
 
 export interface IShortBio {

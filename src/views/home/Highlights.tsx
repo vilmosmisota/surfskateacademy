@@ -1,11 +1,10 @@
-import Image from "next/future/image";
 import Carousel from "nuka-carousel";
 import { useWindowDimensions } from "../../utils/hooks";
 import { IHighlights } from "../../interfaces";
 import { motion } from "framer-motion";
 import { animateIn, animateItemsIn } from "../../utils/animations";
-import Link from "next/link";
-import DelayedLinkBtn from "../../components/buttons/DelayedLinkBtn";
+
+import PostPreview from "../../components/post/PostPreview";
 
 export default function Highlights({
   highlights,
@@ -37,45 +36,7 @@ export default function Highlights({
           slidesToShow={width < 768 || highlights.length <= 1 ? 1 : 3}
         >
           {highlights.map((item) => {
-            return (
-              <article
-                key={item.fields.title}
-                className="bg-beige pb-5 w-full mb-5 mx-auto touch-none h-fit overflow-hidden max-w-sm rounded-lg  text-center shadow"
-              >
-                <div>
-                  <Image
-                    src={`https:${item.fields.featuredImage.fields.file.url}`}
-                    width={
-                      item.fields.featuredImage.fields.file.details.image.width
-                    }
-                    height={
-                      item.fields.featuredImage.fields.file.details.image.height
-                    }
-                    sizes="(max-width: 470px) 90vw,
-                            (max-width: 765px) 70vw,
-                    33vw"
-                    alt=""
-                    className="object-fill"
-                  />
-                </div>
-                <div className="  px-2 py-5  h-[180px]">
-                  <h3 className="mb-3 text-darkBlue uppercase ">
-                    {item.fields.title}
-                  </h3>
-                  <p className="mb-3 text-sm text-left px-2">
-                    {item.fields.introText}
-                  </p>
-                </div>
-                <div>
-                  <DelayedLinkBtn
-                    href={`/highlights/${item.fields.slug}`}
-                    theme="primary-btn text-sm"
-                  >
-                    see more
-                  </DelayedLinkBtn>
-                </div>
-              </article>
-            );
+            return <PostPreview key={item.sys.createdAt} item={item} />;
           })}
         </Carousel>
       </motion.div>

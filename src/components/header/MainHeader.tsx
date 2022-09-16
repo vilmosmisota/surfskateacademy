@@ -1,10 +1,21 @@
 import Image from "next/future/image";
-import { IHeader } from "../../interfaces";
+import { IImage } from "../../interfaces";
 import { motion } from "framer-motion";
+import DelayedLinkBtn from "../buttons/DelayedLinkBtn";
 
-export default function MainHeader({ header }: { header: IHeader }) {
-  const image = header.fields.image;
+type MainHeaderProps = {
+  image: IImage;
+  title: string;
+  link?: string;
+  linkTheme?: string;
+};
 
+export default function MainHeader({
+  image,
+  title,
+  link,
+  linkTheme,
+}: MainHeaderProps) {
   return (
     <header className="mt-4 relative mb-10 md:mb-20 ">
       <section className="flex  px-4 lg:px-0 align-top max-w-screen-lg mx-auto justify-start flex-col-reverse lg:justify-between lg:flex-row lg:align-middle">
@@ -15,7 +26,14 @@ export default function MainHeader({ header }: { header: IHeader }) {
           exit="hidden"
           className="text-center lg:text-left  relative z-20 my-10 self-center md:m-0 max-w-sm lg:max-w-lg mx-auto lg:self-end md:my-10 lg:mb-20"
         >
-          <h1>{header.fields.heading}</h1>
+          <h1>{title}</h1>
+          {link && (
+            <div className="my-5">
+              <DelayedLinkBtn href={link} theme={linkTheme as string}>
+                see more
+              </DelayedLinkBtn>
+            </div>
+          )}
         </motion.div>
         <motion.div
           variants={fadeInAnimation}
