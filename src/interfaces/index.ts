@@ -79,7 +79,7 @@ export interface IHighlightsPost {
   introText: string;
   mainText: string;
   previewImage: IImage;
-  imagelists?: IImage[];
+  imagelists: IImage[];
   isFeatured?: boolean;
   featuredImage?: IImage;
 }

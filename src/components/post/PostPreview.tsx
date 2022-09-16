@@ -6,7 +6,7 @@ export default function PostPreview({ item }: { item: IHighlights }) {
   return (
     <article
       key={item.fields.title}
-      className="bg-beige pb-5 w-full mb-5 mx-auto touch-none h-fit overflow-hidden max-w-sm rounded-lg  text-center shadow"
+      className="bg-beige pb-5 w-full mb-5 mx-auto  h-fit overflow-hidden max-w-sm rounded-lg  text-center shadow"
     >
       <div>
         <Image
