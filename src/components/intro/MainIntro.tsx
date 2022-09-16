@@ -19,14 +19,17 @@ export default function Mainintro({ intro }: { intro: IIntro }) {
           {intro.fields.introText}
         </ReactMarkdown>
       </motion.div>
-      <motion.div variants={animateItemsUp}>
-        <DelayedLinkBtn
-          href={intro.fields.buttonDestination}
-          theme="primary-btn"
-        >
-          {intro.fields.buttonLabel}
-        </DelayedLinkBtn>
-      </motion.div>
+
+      {intro.fields.buttonDestination && (
+        <motion.div variants={animateItemsUp}>
+          <DelayedLinkBtn
+            href={intro.fields.buttonDestination}
+            theme="primary-btn"
+          >
+            {intro.fields.buttonLabel}
+          </DelayedLinkBtn>
+        </motion.div>
+      )}
     </motion.section>
   );
 }

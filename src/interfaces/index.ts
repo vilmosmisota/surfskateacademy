@@ -133,3 +133,14 @@ export interface IHomeContent {
   highlights: IHighlights[];
   shortBio: IShortBio;
 }
+
+export interface IAboutContent {
+  header: IHeader;
+  intro: IIntro;
+  introContentBlock: string;
+  image1: IImage;
+  mainContentBlock: string;
+  image2: IImage;
+  outroContentBlock: string;
+  image3: IImage;
+}
