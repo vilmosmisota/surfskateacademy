@@ -9,7 +9,6 @@ export default function AboutView({
 }: {
   aboutContent: IAboutContent;
 }) {
-  console.log(aboutContent);
   return (
     <>
       <MainHeader

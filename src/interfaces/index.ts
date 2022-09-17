@@ -144,3 +144,11 @@ export interface IAboutContent {
   outroContentBlock: string;
   image3: IImage;
 }
+
+export interface IClassesContent {
+  header: IHeader;
+  intro: IIntro;
+  introContent: string;
+  contentBlock: IContentsBlock[];
+  cta: ICallToAction;
+}

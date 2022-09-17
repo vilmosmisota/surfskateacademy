@@ -14,6 +14,7 @@ export default function DelayedLinkBtn({
 }: DelayedLinkBtnProps) {
   const router = useRouter();
   const [isRouteChanged, setRouteChanged] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     if (isRouteChanged === false) return;
@@ -41,7 +42,7 @@ export default function DelayedLinkBtn({
   };
   return (
     <button className={`btn ${theme} `} onClick={handleClick}>
-      {children}
+      {isLoading ? "Loading..." : children}
     </button>
   );
 }

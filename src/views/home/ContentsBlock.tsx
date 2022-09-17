@@ -5,8 +5,10 @@ import { animateItemsUp, animateUp } from "../../utils/animations";
 
 export default function ContentsBlock({
   contentsBlock,
+  theme,
 }: {
   contentsBlock: IContentsBlock[];
+  theme: "light" | "dark";
 }) {
   return (
     <section className="  mx-auto lg:px-0 max-w-screen-lg mb-10 md:mb-20">
@@ -38,7 +40,9 @@ export default function ContentsBlock({
               initial={"hidden"}
               whileInView={"show"}
               viewport={{ once: true }}
-              className="bg-darkBlue relative min-h-[330px]  lg:min-h-[390px] flex flex-col justify-center rounded-lg px-6 mx-4 md:pt-12 pb-8 shadow z-10 h-min lg:mx-0"
+              className={` ${
+                theme === "dark" ? "bg-darkBlue" : "bg-beige"
+              } relative min-h-[330px]  lg:min-h-[390px] flex flex-col justify-center rounded-lg px-6 mx-4 md:pt-12 pb-8 shadow z-10 h-min lg:mx-0`}
             >
               <motion.div
                 variants={animateItemsUp}
@@ -47,7 +51,11 @@ export default function ContentsBlock({
                 <h2 className="uppercase font-black  text-red pb-2 tracking-wide lg:text-2xl">
                   {content.fields.contentTitle}
                 </h2>
-                <p className="text-light text-sm md:text-base">
+                <p
+                  className={`${
+                    theme === "dark" ? "text-light" : "text-dark"
+                  }  text-sm md:text-base`}
+                >
                   {content.fields.description}
                 </p>
               </motion.div>

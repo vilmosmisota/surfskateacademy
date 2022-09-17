@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import { ICallToAction } from "../../interfaces";
 import { motion } from "framer-motion";
 import { animateItemsUp, animateUp } from "../../utils/animations";
+import DelayedLinkBtn from "../../components/buttons/DelayedLinkBtn";
 
 export default function CallToAction({
   callToAction,
@@ -23,11 +24,12 @@ export default function CallToAction({
         </ReactMarkdown>
       </motion.div>
       <motion.div variants={animateItemsUp}>
-        <Link href={callToAction.fields.buttonDestination}>
-          <button className="btn secondary-btn">
-            {callToAction.fields.buttonLabel}
-          </button>
-        </Link>
+        <DelayedLinkBtn
+          href={callToAction.fields.buttonDestination}
+          theme="btn secondary-btn"
+        >
+          {callToAction.fields.buttonLabel}
+        </DelayedLinkBtn>
       </motion.div>
     </motion.section>
   );

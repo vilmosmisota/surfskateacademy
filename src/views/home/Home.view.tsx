@@ -23,7 +23,7 @@ export default function HomeView({
       <Supporter />
       <main>
         <Mainintro intro={homeContent.intro} />
-        <ContentsBlock contentsBlock={homeContent.carousel} />
+        <ContentsBlock theme="dark" contentsBlock={homeContent.carousel} />
         <CallToAction callToAction={homeContent.callToAction} />
         <Highlights highlights={highlights} />
         <ShortBio shortBio={homeContent.shortBio} />
