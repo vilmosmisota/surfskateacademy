@@ -30,7 +30,7 @@ export default function Input({
         className="pb-2 font-sansBody capitalize md:self-center md:pb-0"
         htmlFor={`${name}-input`}
       >
-        {label}:
+        {label}
       </label>
       <input
         id={`${name}-input`}

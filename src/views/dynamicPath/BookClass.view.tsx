@@ -7,12 +7,13 @@ import Modal from "../../components/modals/Modal";
 import { ClassProps } from "../../pages/booking/[id]";
 import { postBooking } from "../../provider/postData";
 import closeIcon from "../../assets/icons/close.svg";
+import BackButton from "../../components/buttons/BackButton";
 
 export default function BookClassView({ cls }: ClassProps) {
   return (
     <>
       <BookingHeader />
-      <main className=" max-w-screen-lg mx-auto px-4 lg:px-0 flex flex-wrap">
+      <main className=" max-w-screen-lg mb-10 md:mb-20 mx-auto px-4 lg:px-0 flex flex-wrap">
         <BookingInfo cls={cls} />
         <BookingForm clsId={cls.class_id} />
       </main>
@@ -21,15 +22,9 @@ export default function BookClassView({ cls }: ClassProps) {
 }
 
 const BookingHeader = () => {
-  const router = useRouter();
   return (
-    <header className="mt-16 relative  max-w-screen-lg mx-auto px-4 lg:px-0">
-      <button
-        className="border border-black py-1 px-3 rounded-lg text-xs"
-        onClick={() => router.back()}
-      >
-        &#8592; Back
-      </button>
+    <header className="mt-4 relative  max-w-screen-lg mx-auto px-4 lg:px-0">
+      <BackButton />
       <h1 className="my-4 text-center">Booking</h1>
     </header>
   );
@@ -70,9 +65,14 @@ const BookingInfo = ({ cls }: ClassProps) => {
 };
 
 const BOOK_CLASS_FIELD = [
-  { label: "first name", name: "fname", inputType: "text", isRequired: true },
-  { label: "last name", name: "lname", inputType: "text", isRequired: true },
-  { label: "email", name: "email", inputType: "email", isRequired: true },
+  {
+    label: "first name * ",
+    name: "fname",
+    inputType: "text",
+    isRequired: true,
+  },
+  { label: "last name * ", name: "lname", inputType: "text", isRequired: true },
+  { label: "email * ", name: "email", inputType: "email", isRequired: true },
   {
     label: "phone number",
     name: "phonenumber",
@@ -85,12 +85,14 @@ const BOOK_CLASS_FIELD = [
 const BookingForm = ({ clsId }: { clsId: string }) => {
   const [wasSubmitted, setWasSubmitted] = useState(false);
   const [isError, setError] = useState("");
+  const [isLoading, setLoading] = useState(false);
   const [isConfirmed, setConfirmed] = useState<string | undefined>();
 
   const [classModalOpen, setClassModalOpen] = useState(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setLoading(true);
     const formData = new FormData(event.currentTarget);
     const { fname, lname, email, is_equipment, phonenumber, message } =
       Object.fromEntries(formData);
@@ -123,6 +125,7 @@ const BookingForm = ({ clsId }: { clsId: string }) => {
   useEffect(() => {
     if (!wasSubmitted) return;
     setClassModalOpen(true);
+    setLoading(false);
   }, [wasSubmitted]);
   return (
     <>
@@ -143,7 +146,9 @@ const BookingForm = ({ clsId }: { clsId: string }) => {
           />
         ))}
         <div className="mb-4">
-          <p className="pb-2">Do you need a board provided during the class?</p>
+          <p className="pb-2">
+            Do you need a board provided during the class? *
+          </p>
           <input
             type="radio"
             id="is_equipment_yes"
@@ -185,6 +190,7 @@ const BookingForm = ({ clsId }: { clsId: string }) => {
             <Link href="/" passHref>
               <a className="underline">terms and conditions</a>
             </Link>
+            *
           </label>
           <input
             type="checkbox"
@@ -194,11 +200,8 @@ const BookingForm = ({ clsId }: { clsId: string }) => {
           />
         </div>
 
-        <button
-          type="submit"
-          className="py-2 px-6 bg-green uppercase font-bold tracking-wider rounded-lg min-w-[125px] shadow"
-        >
-          Submit
+        <button type="submit" className="btn primary-btn text-sm md:text-base">
+          {isLoading ? "Loading..." : "Submit"}
         </button>
       </form>
       <Modal state={classModalOpen}>

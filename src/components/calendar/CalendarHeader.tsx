@@ -41,7 +41,7 @@ export default function CalendarHeader({
       <div className="flex-1 grid grid-cols-7 justify-items-center gap-2">
         {days.map((d) => (
           <div key={d}>
-            <p className="text-xs">{d}</p>
+            <p className="text-xs uppercase tracking-wider">{d}</p>
           </div>
         ))}
       </div>

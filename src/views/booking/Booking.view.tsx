@@ -2,13 +2,15 @@ import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import CalendarHeader from "../../components/calendar/CalendarHeader";
 import Month from "../../components/calendar/Month";
+import SmallHeader from "../../components/header/SmallHeader";
+import Quotes from "../../components/quotes/Quotes";
 import { IClass } from "../../interfaces";
 import { ClassesProps } from "../../pages/booking";
 import getMonth from "../../utils/getMonth";
-import BookingHeader from "./BookingHeader";
+
 import FilterClasses from "./FilterClasses";
 
-export default function BookingView({ classes }: ClassesProps) {
+export default function BookingView({ classes, bookingContent }: ClassesProps) {
   const month = dayjs().month();
   const [monthIndex, setMonthIndex] = useState(month);
   const [filter, setFilter] = useState("all");
@@ -27,7 +29,10 @@ export default function BookingView({ classes }: ClassesProps) {
 
   return (
     <>
-      <BookingHeader />
+      <SmallHeader
+        image={bookingContent.image}
+        title={bookingContent.heading}
+      />
       <main className=" pb-5 mb-10 md:mx-4 -mt-16 lg:mx-auto rounded-lg lg:px-0 max-w-[950px] relative z-[5] bg-beige border-orange">
         <FilterClasses
           cities={cities}
@@ -44,6 +49,7 @@ export default function BookingView({ classes }: ClassesProps) {
           </div>
         </section>
       </main>
+      <Quotes quotes={bookingContent.quotes} />
     </>
   );
 }

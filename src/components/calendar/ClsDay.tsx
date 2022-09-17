@@ -3,6 +3,7 @@ import { useState } from "react";
 import { IClass } from "../../interfaces";
 import Modal from "../modals/Modal";
 import ModalClasses from "./ModalClass";
+import { AnimatePresence, motion } from "framer-motion";
 
 type ClsDayProps = {
   day: dayjs.Dayjs;
@@ -18,6 +19,7 @@ export default function ClsDay({
   day,
 }: ClsDayProps) {
   const { classModalOpen, close, open } = useModal(dayClasses);
+
   return (
     <>
       <div

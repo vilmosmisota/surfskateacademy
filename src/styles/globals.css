@@ -56,6 +56,14 @@
     @apply pb-5;
   }
 
+  .markdown-text-quote h2 {
+    @apply mb-3 font-sans text-lg font-semibold uppercase md:text-2xl tracking-wider;
+  }
+
+  .markdown-text-quote h3 {
+    @apply text-right mt-3 text-base;
+  }
+
   .res-img {
     @apply w-full h-auto;
   }

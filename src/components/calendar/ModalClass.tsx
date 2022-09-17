@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import { IClass } from "../../interfaces";
 import closeIcon from "../../assets/icons/close.svg";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { animateItemsUp, animateUp } from "../../utils/animations";
+import DelayedLinkBtn from "../buttons/DelayedLinkBtn";
 
 type ModalClassesProps = {
   day: dayjs.Dayjs;
@@ -24,7 +27,12 @@ export default function ModalClasses({
   }, [dayClasses]);
 
   return (
-    <div className=" bg-beige py-12 relative max-w-screen-sm mx-auto w-full rounded-lg min-h-[300px]">
+    <motion.div
+      className=" bg-beige py-12 relative max-w-screen-sm mx-auto w-full rounded-lg min-h-[300px]"
+      variants={animateUp}
+      animate="show"
+      initial="hidden"
+    >
       <button className="w-8 absolute right-2 top-2" onClick={close}>
         <Image src={closeIcon as string} alt="close" layout="responsive" />
       </button>
@@ -39,8 +47,9 @@ export default function ModalClasses({
 
       {dayClasses.map((cls) => {
         return (
-          <div
+          <motion.div
             key={cls.class_id}
+            variants={animateItemsUp}
             className="w-11/12 bg-darkBlue h-min rounded-lg mx-auto max-w-md p-5 flex align-middle justify-between flex-wrap mb-5"
           >
             <div className="w-2/3 h-min self-center">
@@ -63,11 +72,12 @@ export default function ModalClasses({
 
             <div className="w-2/6 self-center justify-self-end text-right ">
               {cls.is_available ? (
-                <Link href={`/booking/${cls.class_id}`}>
-                  <button className=" bg-green cursor-pointer py-1 px-5 rounded-lg font-black shadow">
-                    {cls.time.slice(0, -3)}
-                  </button>
-                </Link>
+                <DelayedLinkBtn
+                  href={`/booking/${cls.class_id}`}
+                  theme="primary-btn text-sm"
+                >
+                  {cls.time.slice(0, -3)}
+                </DelayedLinkBtn>
               ) : (
                 <button className=" bg-red opacity-40 cursor-default py-1 px-5 rounded-lg font-black shadow line-through">
                   {cls.time.slice(0, -3)}
@@ -79,9 +89,9 @@ export default function ModalClasses({
                 <p className="text-sm text-light font-thin">{cls.info}</p>
               </div>
             )}
-          </div>
+          </motion.div>
         );
       })}
-    </div>
+    </motion.div>
   );
 }

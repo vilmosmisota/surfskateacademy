@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
-import { SyntheticEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import Spinner from "../loading/Spinner";
 
 type DelayedLinkBtnProps = {
   children: string;
@@ -13,8 +14,9 @@ export default function DelayedLinkBtn({
   theme,
 }: DelayedLinkBtnProps) {
   const router = useRouter();
-  const [isRouteChanged, setRouteChanged] = useState(false);
+  const [isClicked, setClicked] = useState(false);
   const [isLoading, setLoading] = useState(false);
+  const [isRouteChanged, setRouteChanged] = useState(false);
 
   useEffect(() => {
     if (isRouteChanged === false) return;
@@ -28,21 +30,49 @@ export default function DelayedLinkBtn({
   }, [isRouteChanged]);
 
   useEffect(() => {
-    router.events.on("routeChangeComplete", () => setRouteChanged(true));
-    return () => {
-      router.events.off("routeChangeComplete", () => setRouteChanged(false));
+    const routeStart = () => {
+      if (!isClicked) return;
+      setLoading(true);
     };
-  }, []);
 
-  const handleClick = (event: SyntheticEvent) => {
+    const routeComplete = () => {
+      setRouteChanged(true);
+    };
+
+    const routeFinish = () => {
+      setLoading(false);
+      setRouteChanged(false);
+    };
+    router.events.on("routeChangeStart", routeStart);
+    router.events.on("routeChangeComplete", routeComplete);
+
+    return () => {
+      router.events.off("routeChangeComplete", routeFinish);
+    };
+  }, [isClicked, router.events]);
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
+    if (event.currentTarget.getAttribute("data-target") === href) {
+      setClicked(true);
+    }
     router
       .push(href, undefined, { scroll: false })
       .catch((err) => console.error(err));
   };
   return (
-    <button className={`btn ${theme} `} onClick={handleClick}>
-      {isLoading ? "Loading..." : children}
+    <button
+      data-target={href}
+      className={`btn ${theme} `}
+      onClick={handleClick}
+    >
+      {isLoading ? (
+        <>
+          <Spinner /> <span className="text-xs md:text-sm">Loading...</span>
+        </>
+      ) : (
+        children
+      )}
     </button>
   );
 }

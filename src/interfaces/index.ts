@@ -152,3 +152,22 @@ export interface IClassesContent {
   contentBlock: IContentsBlock[];
   cta: ICallToAction;
 }
+
+export interface IBookingLandingContentRaw {
+  heading: string;
+  image: IImage;
+  quotes: {
+    fields: {
+      content: string;
+    };
+  }[];
+}
+export interface IBookingLandingContent {
+  heading: string;
+  image: IImage;
+  quotes: {
+    fields: {
+      content: string;
+    };
+  };
+}
