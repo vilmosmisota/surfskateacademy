@@ -38,13 +38,15 @@ export default function FilterClasses({
 
       <ul className="flex items-center w-full max-w-xs justify-between md:justify-evenly">
         <li className="text-sm uppercase underline font-sans tracking-wider font-bold">
-          <Link href="/booking/prices">Prices</Link>
+          <Link href="/booking/details/prices">Prices</Link>
         </li>
         <li className="text-sm uppercase underline font-sans tracking-wider font-bold">
-          FAQ
+          <Link href="/booking/details/faq">FAQ</Link>
         </li>
         <li className="text-sm uppercase underline font-sans tracking-wider font-bold">
-          T&apos;s and C&apos;s
+          <Link href="/booking/details/terms-and-conditions">
+            T&apos;s and C&apos;s
+          </Link>
         </li>
       </ul>
     </section>

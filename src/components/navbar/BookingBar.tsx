@@ -4,7 +4,14 @@ import { useEffect, useState } from "react";
 
 export default function BookingBar() {
   return (
-    <section className="h-[120px] md:h-[100px] bg-orange rounded-t-lg py-2 px-5 flex flex-col-reverse items-center justify-evenly md:justify-evenly md:flex-row">
+    <section className="h-[120px] md:h-[100px] bg-orange rounded-t-lg py-2 px-5 flex flex-col items-center justify-evenly md:justify-evenly md:flex-row">
+      <div className="self-start md:self-center border-2 rounded-lg ">
+        <Link href={"/booking"}>
+          <a className="uppercase text-sm py-2 font-bold px-1">
+            Back to Booking
+          </a>
+        </Link>
+      </div>
       <ul className="flex items-center w-full max-w-xs justify-between md:justify-evenly">
         {links.map((item) => {
           return <LinkItem key={item.link} item={item} />;
@@ -16,20 +23,16 @@ export default function BookingBar() {
 
 const links = [
   {
-    label: "back",
-    link: "/booking",
-  },
-  {
     label: "prices",
-    link: "/booking/prices",
+    link: "/booking/details/prices",
   },
   {
     label: "faq",
-    link: "/booking/faq",
+    link: "/booking/details/faq",
   },
   {
     label: "T's and C's",
-    link: "/booking/terms-and-conditions",
+    link: "/booking/details/terms-and-conditions",
   },
 ];
 
@@ -43,10 +46,12 @@ const LinkItem = ({ item }: LinkItemProps) => {
   const [isActive, setActive] = useState(false);
   const router = useRouter();
   useEffect(() => {
-    if (router.pathname !== item.link) return;
-    setActive(true);
+    if (router.query.page !== item.link.split("/")[3]) {
+      setActive(false);
+      return;
+    }
 
-    return () => setActive(false);
+    setActive(true);
   }, [isActive, router, item.link]);
 
   return (

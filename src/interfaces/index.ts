@@ -175,3 +175,19 @@ export interface IBookingLandingContent {
 export interface IBookingLandingItem {
   confirmationMessage: string;
 }
+
+export interface IBookingDetailsPage {
+  page: string;
+  heading: string;
+  mainBlock: string;
+  outroBlock: string;
+}
+
+export interface IBookingDetails {
+  fields: {
+    page: string;
+    heading: string;
+    mainBlock: string;
+    outroBlock: string;
+  };
+}

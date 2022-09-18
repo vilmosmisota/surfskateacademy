@@ -72,6 +72,14 @@
     @apply mb-3;
   }
 
+  .markdown-text-details li {
+    @apply mb-5 list-disc;
+  }
+
+  .markdown-text-details p {
+    @apply mb-2;
+  }
+
   .res-img {
     @apply w-full h-auto;
   }
