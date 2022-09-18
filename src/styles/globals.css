@@ -64,6 +64,14 @@
     @apply text-right mt-3 text-base;
   }
 
+  .markdown-text-message h3 {
+    @apply mb-3 text-darkBlue;
+  }
+
+  .markdown-text-message p {
+    @apply mb-3;
+  }
+
   .res-img {
     @apply w-full h-auto;
   }

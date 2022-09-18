@@ -171,3 +171,7 @@ export interface IBookingLandingContent {
     };
   };
 }
+
+export interface IBookingLandingItem {
+  confirmationMessage: string;
+}

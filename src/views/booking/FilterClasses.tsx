@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 type FilterClassesProps = {
   cities: string[];
   handleSelectFilter: (e: React.ChangeEvent<HTMLSelectElement>) => void;
@@ -36,7 +38,7 @@ export default function FilterClasses({
 
       <ul className="flex items-center w-full max-w-xs justify-between md:justify-evenly">
         <li className="text-sm uppercase underline font-sans tracking-wider font-bold">
-          Prices
+          <Link href="/booking/prices">Prices</Link>
         </li>
         <li className="text-sm uppercase underline font-sans tracking-wider font-bold">
           FAQ

@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Input from "../../components/forms/Input";
 import Modal from "../../components/modals/Modal";
@@ -8,14 +7,19 @@ import { ClassProps } from "../../pages/booking/[id]";
 import { postBooking } from "../../provider/postData";
 import closeIcon from "../../assets/icons/close.svg";
 import BackButton from "../../components/buttons/BackButton";
+import { IClass } from "../../interfaces";
+import ReactMarkdown from "react-markdown";
 
-export default function BookClassView({ cls }: ClassProps) {
+export default function BookClassView({ cls, bookingItemContent }: ClassProps) {
   return (
     <>
       <BookingHeader />
       <main className=" max-w-screen-lg mb-10 md:mb-20 mx-auto px-4 lg:px-0 flex flex-wrap">
         <BookingInfo cls={cls} />
-        <BookingForm clsId={cls.class_id} />
+        <BookingForm
+          clsId={cls.class_id}
+          message={bookingItemContent.confirmationMessage}
+        />
       </main>
     </>
   );
@@ -30,7 +34,7 @@ const BookingHeader = () => {
   );
 };
 
-const BookingInfo = ({ cls }: ClassProps) => {
+const BookingInfo = ({ cls }: { cls: IClass }) => {
   const formatedDate = new Date(cls.date.split("T")[0]).toLocaleDateString(
     "en-GB"
   );
@@ -82,7 +86,13 @@ const BOOK_CLASS_FIELD = [
   },
 ];
 
-const BookingForm = ({ clsId }: { clsId: string }) => {
+const BookingForm = ({
+  clsId,
+  message,
+}: {
+  clsId: string;
+  message: string;
+}) => {
   const [wasSubmitted, setWasSubmitted] = useState(false);
   const [isError, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
@@ -209,6 +219,7 @@ const BookingForm = ({ clsId }: { clsId: string }) => {
           isError={isError}
           isConfirmed={isConfirmed}
           close={() => setClassModalOpen(false)}
+          message={message}
         />
       </Modal>
     </>
@@ -219,11 +230,13 @@ type ModalBookingConfirmedProps = {
   isError: string;
   isConfirmed: string | undefined;
   close: () => void;
+  message: string;
 };
 
 const ModalBookingConfirmed = ({
   isError,
   isConfirmed,
+  message,
 }: ModalBookingConfirmedProps) => {
   return (
     <div className=" bg-beige py-12 flex align-middle relative max-w-screen-sm mx-auto w-full rounded-lg min-h-[300px]">
@@ -245,14 +258,12 @@ const ModalBookingConfirmed = ({
 
         {typeof isConfirmed !== "undefined" && (
           <>
-            <p className="mb-4 font-sans font-bold capitalize">
+            <h3 className="mb-4 font-sans font-black text-center capitalize">
               Thanks {isConfirmed}!
-            </p>
-            <p className="mb-2">Your booking was successful.</p>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo
-              incidunt, autem architecto aliquid suscipit adipisci.
-            </p>
+            </h3>
+            <ReactMarkdown className="markdown-text-message">
+              {message}
+            </ReactMarkdown>
           </>
         )}
       </div>
