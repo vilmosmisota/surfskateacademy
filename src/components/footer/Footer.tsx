@@ -22,8 +22,44 @@ const icons = [
     alt: "youtube logo",
   },
 ];
-const midPaths = ["review", "faq", "prices", "t's & c's"];
-const sidePaths = ["booking", "about", "gallery", "classes"];
+
+const midPaths = [
+  {
+    label: "review",
+    link: "/booking/details/review",
+  },
+  {
+    label: "prices",
+    link: "/booking/details/prices",
+  },
+  {
+    label: "faq",
+    link: "/booking/details/faq",
+  },
+  {
+    label: "T's and C's",
+    link: "/booking/details/terms-and-conditions",
+  },
+];
+
+const sidePaths = [
+  {
+    label: "booking",
+    link: "/booking",
+  },
+  {
+    label: "about",
+    link: "/about",
+  },
+  {
+    label: "highlights",
+    link: "/highlights",
+  },
+  {
+    label: "classes",
+    link: "/classes",
+  },
+];
 
 export default function Footer() {
   return (
@@ -54,13 +90,13 @@ export default function Footer() {
         </article>
         <article className="border-2 md:min-h-[300px] py-5 border-orange md:min-w-full md:max-w-[290px] rounded-lg min-h-[200px] flex align-middle justify-center mb-5">
           <ul className="list-none flex flex-col justify-evenly">
-            {midPaths.map((path) => (
+            {midPaths.map((item) => (
               <li
-                key={path}
+                key={item.link}
                 className="text-light font-medium uppercase tracking-wide"
               >
-                <Link href={`/${path}`} passHref scroll={true}>
-                  <a>{path}</a>
+                <Link href={item.link} passHref scroll={true}>
+                  {item.label}
                 </Link>
               </li>
             ))}
@@ -68,13 +104,13 @@ export default function Footer() {
         </article>
         <article className="border-2 md:min-h-[300px] py-5 border-orange md:min-w-full md:max-w-[290px] rounded-lg min-h-[200px] flex align-middle justify-center mb-5">
           <ul className="list-none flex flex-col justify-evenly">
-            {sidePaths.map((path) => (
+            {sidePaths.map((item) => (
               <li
-                key={path}
+                key={item.link}
                 className="text-light font-medium uppercase tracking-wide"
               >
-                <Link href={`/${path}`} passHref scroll={true}>
-                  <a>{path}</a>
+                <Link href={item.link} passHref scroll={true}>
+                  {item.label}
                 </Link>
               </li>
             ))}

@@ -72,7 +72,11 @@ const useModal = (dayClasses: IClass[]) => {
   const [classModalOpen, setClassModalOpen] = useState(false);
   const close = () => setClassModalOpen(false);
   const open = () => {
-    if (new Date(dayClasses[0].date.split("T")[0]) < new Date()) return;
+    if (
+      new Date(dayClasses[0].date.split("T")[0]) <
+      new Date(new Date().setHours(0, 0))
+    )
+      return;
     setClassModalOpen(true);
   };
 

@@ -10,6 +10,8 @@ import fb from "../../assets/icons/fb-black.svg";
 import ig from "../../assets/icons/ig-black.svg";
 import youtube from "../../assets/icons/youtube-black.svg";
 
+import ActiveRouteBg from "./ActiveRouteBg";
+
 export default function Navbar() {
   const [isOpen, setOpen] = useState(false);
   const paths = ["about", "classes", "highlights", "booking"];
@@ -18,8 +20,9 @@ export default function Navbar() {
     <nav className="relative top-0 z-50 h-14 w-full py-5">
       <div className="container mx-auto flex h-full max-w-screen-lg items-center justify-between  px-4 lg:px-0 font-sans font-semibold uppercase">
         <Link href="/" passHref>
-          <div className="w-20 md:w-24 cursor-pointer relative">
+          <div className="w-20 flex justify-center items-center md:w-24 cursor-pointer relative">
             <Image src={logo as string} alt="logo" sizes="10vw" />
+            <ActiveRouteBg path={"/"} />
           </div>
         </Link>
 

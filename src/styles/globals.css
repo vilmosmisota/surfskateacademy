@@ -76,6 +76,10 @@
     @apply mb-5 list-disc;
   }
 
+  .markdown-text-details h2 {
+    @apply mb-4;
+  }
+
   .markdown-text-details p {
     @apply mb-2;
   }

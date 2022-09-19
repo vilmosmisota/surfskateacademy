@@ -197,7 +197,7 @@ const BookingForm = ({
         <div className="mt-4 mb-8 text-left w-full">
           <label htmlFor="consent" className="italic pr-4">
             I agree to the{" "}
-            <Link href="/" passHref>
+            <Link href="/booking/details/terms-and-conditions" passHref>
               <a className="underline">terms and conditions</a>
             </Link>
             *

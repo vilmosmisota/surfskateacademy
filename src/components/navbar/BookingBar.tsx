@@ -7,9 +7,7 @@ export default function BookingBar() {
     <section className="h-[120px] md:h-[100px] bg-orange rounded-t-lg py-2 px-5 flex flex-col items-center justify-evenly md:justify-evenly md:flex-row">
       <div className="self-start md:self-center border-2 rounded-lg ">
         <Link href={"/booking"}>
-          <a className="uppercase text-sm py-2 font-bold px-1">
-            Back to Booking
-          </a>
+          <a className="uppercase text-sm py-2 font-bold px-1">Booking</a>
         </Link>
       </div>
       <ul className="flex items-center w-full max-w-xs justify-between md:justify-evenly">
@@ -33,6 +31,10 @@ const links = [
   {
     label: "T's and C's",
     link: "/booking/details/terms-and-conditions",
+  },
+  {
+    label: "Review",
+    link: "/booking/details/review",
   },
 ];
 

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import ActiveRouteBg from "./ActiveRouteBg";
 
 type NavlinksProps = {
   path: string;
@@ -11,7 +12,7 @@ export default function Navlinks({ path, handleClick }: NavlinksProps) {
   return (
     <li
       key={path}
-      className="flex w-full justify-center  border-opacity-5 py-5 md:w-fit md:border-none md:py-0 "
+      className="flex relative w-full justify-center  py-5 md:w-fit  md:py-0 "
     >
       <Link href={`/${path}`} passHref>
         <a
@@ -23,6 +24,7 @@ export default function Navlinks({ path, handleClick }: NavlinksProps) {
           {path}
         </a>
       </Link>
+      <ActiveRouteBg path={`/${path}`} />
     </li>
   );
 }

@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { supabase } from "../libs/supabase";
 import { AuthChangeEvent, Session } from "@supabase/supabase-js";
 import PageAnimation from "../components/layout/PageAnimation";
+import Seo from "../components/seo/Seo";
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   useEffect(() => {
@@ -31,11 +32,14 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   }, []);
 
   return (
-    <Layout>
-      <PageAnimation>
-        <Component {...pageProps} key={router.route} />
-      </PageAnimation>
-    </Layout>
+    <>
+      <Seo />
+      <Layout>
+        <PageAnimation>
+          <Component {...pageProps} key={router.route} />
+        </PageAnimation>
+      </Layout>
+    </>
   );
 }
 
