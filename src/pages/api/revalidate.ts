@@ -1,3 +1,4 @@
+import PromisePool from "@supercharge/promise-pool/dist";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 type Obj = {
@@ -78,9 +79,14 @@ function getValues(item: { "en-US": string[] | string }) {
 }
 
 async function revalidatePaths(paths: string[], res: NextApiResponse) {
-  if (paths.length === 0) return;
-  for (const path of paths) {
-    await res.revalidate(path);
-  }
-  return res.json({ revalidated: true });
+  // if (paths.length === 0) return;
+  // for (const path of paths) {
+  //   await res.revalidate(path);
+  // }
+  // return res.json({ revalidated: true });
+  await PromisePool.withConcurrency(1)
+    .for(paths)
+    .process(async (data) => {
+      await res.revalidate(data);
+    });
 }
