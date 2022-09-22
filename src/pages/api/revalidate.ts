@@ -83,10 +83,11 @@ async function revalidatePaths(paths: string[], res: NextApiResponse) {
   // for (const path of paths) {
   //   await res.revalidate(path);
   // }
-  // return res.json({ revalidated: true });
+
   await PromisePool.withConcurrency(1)
     .for(paths)
     .process(async (data) => {
       await res.revalidate(data);
     });
+  return res.json({ revalidated: true });
 }
