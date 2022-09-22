@@ -79,10 +79,8 @@ function getValues(item: { "en-US": string[] | string }) {
 
 async function revalidatePaths(paths: string[], res: NextApiResponse) {
   if (paths.length === 0) return;
-  await Promise.all(
-    paths.map(async (path) => {
-      await res.revalidate(path);
-    })
-  );
+  for (const path of paths) {
+    await res.revalidate(path);
+  }
   return res.json({ revalidated: true });
 }
