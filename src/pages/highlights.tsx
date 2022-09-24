@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import { IHighlights } from "../interfaces";
 import { contentApi } from "../libs/contentful";
 import HighlightsView from "../views/highlights/HighlightsView";
@@ -11,7 +11,7 @@ export default function Highlights({
   return <HighlightsView highlights={highlights} />;
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const content = await contentApi
     .getEntries({ content_type: "highlights" })
     .catch((err) => {

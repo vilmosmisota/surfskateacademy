@@ -14,8 +14,11 @@ export default async function handler(
     return res.status(401).json({ message: "Invalid token" });
   }
 
+  const url = req.query.url as string;
+  console.log(url);
+
   try {
-    await res.revalidate("/");
+    await res.revalidate(url);
     return res.json({ revalidated: true });
   } catch (err) {
     return res.status(500).send("Error revalidating");
