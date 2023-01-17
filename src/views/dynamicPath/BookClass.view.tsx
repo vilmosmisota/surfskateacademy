@@ -64,6 +64,10 @@ const BookingInfo = ({ cls }: { cls: IClass }) => {
           </li>
         )}
       </ul>
+      <p className="font-bold tracking-wider">
+        For group classes to go ahead there is a minimum of three studends to be
+        booked.
+      </p>
     </article>
   );
 };

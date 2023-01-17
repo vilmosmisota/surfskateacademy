@@ -20,7 +20,7 @@ export default function PostPreview({ item }: { item: IHighlights }) {
           className="cover-img"
         />
       </div>
-      <div className="  px-2 py-5  h-[180px]">
+      <div className="  px-2 py-5  h-[230px]">
         <h3 className="mb-3 text-darkBlue uppercase ">{item.fields.title}</h3>
         <p className="mb-3 text-sm text-left px-2">{item.fields.introText}</p>
       </div>
