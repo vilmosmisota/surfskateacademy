@@ -25,7 +25,7 @@ export default function Highlights({
         variants={animateItemsIn}
         className="text-center font-black tracking-wide uppercase mb-6 md:mb-8"
       >
-        Lorem ipsum sample text
+        Events and organizations we have worked with
       </motion.h2>
       <motion.div variants={animateItemsIn}>
         <Carousel

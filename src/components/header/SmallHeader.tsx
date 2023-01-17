@@ -19,7 +19,7 @@ export default function SmallHeader({ image, title }: SmallHeaderProps) {
         />
       </div>
       <div className="absolute top-2/4 left-2/4 -translate-y-1/2 -translate-x-1/2 text-center">
-        <h1 className="text-orange max-w-[300px]">{title}</h1>
+        <h1 className="text-orange max-w-[450px]">{title}</h1>
       </div>
     </header>
   );
