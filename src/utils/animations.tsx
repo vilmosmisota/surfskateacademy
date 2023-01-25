@@ -32,7 +32,7 @@ export const animateUp = {
       duration: 0.5,
       type: "spring",
       stiffness: 110,
-      staggerChildren: 0.8,
+      staggerChildren: 0.5,
     },
   },
   hidden: {
