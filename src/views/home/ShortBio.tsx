@@ -10,10 +10,11 @@ export default function ShortBio({ shortBio }: { shortBio: IShortBio }) {
       <div className="w-full z-0 max-w-[480px] mx-auto">
         <Image
           src={`https:${image.fields.file.url}`}
-          width={image.fields.file.details.image.width}
+          width={image.fields.file.details.image.width || 700}
           height={image.fields.file.details.image.height}
           alt={image.fields.title}
           className=""
+          fill
           sizes="(max-width: 510px) 90vw,
                             (max-width: 900px) 80vw,
                     60vw"
