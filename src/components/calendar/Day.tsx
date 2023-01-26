@@ -46,18 +46,21 @@ const customDays = (day: dayjs.Dayjs) => {
   const isToday = day.format("DD-MM-YY") === dayjs().format("DD-MM-YY");
   const isThisMonth = day.format("MM-YY") === dayjs().format("MM-YY");
   const isPrevDay = day.format("DD-MM-YY") < dayjs().format("DD-MM-YY");
-  const isPrevMonth = day.format("MM-YY") < dayjs().format("MM-YY");
+  const isPrevMonth = day.format("MM-YY") > dayjs().format("MM-YY");
+  const isNextMonth = day.format("MM-YY") < dayjs().format("MM-YY");
+
+  const currentTimestamp = dayjs().valueOf();
+  const dayTimestamp = day.valueOf();
 
   const getCurrentDayClass = () => {
     if (isToday) return "text-light bg-red rounded-t-md w-full";
-    if ((isPrevDay && isThisMonth) || isPrevMonth) return "text-darkBlue";
+    if (isPrevDay && isThisMonth) return "text-darkBlue";
     return "text-light";
   };
 
   const hidePrevDays = () => {
-    if (isPrevMonth) return "opacity-0";
-    if ((isPrevDay && isThisMonth) || isPrevMonth)
-      return "bg-none border-darkBlue border";
+    if (isPrevDay && isThisMonth) return "bg-none border-darkBlue border-2";
+    if (dayTimestamp < currentTimestamp && !isToday) return "opacity-0 bg-none";
     return "bg-darkBlue";
   };
 
