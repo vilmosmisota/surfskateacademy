@@ -7,6 +7,7 @@ import Quotes from "../../components/quotes/Quotes";
 import { IClass } from "../../interfaces";
 import { ClassesProps } from "../../pages/booking";
 import getMonth from "../../utils/getMonth";
+import { useLogger } from "../../utils/hooks";
 
 import FilterClasses from "./FilterClasses";
 
@@ -45,7 +46,11 @@ export default function BookingView({ classes, bookingContent }: ClassesProps) {
             monthIndex={monthIndex}
           />
           <div className="flex flex-1">
-            <Month month={currenMonth} classes={fClasses} />
+            <Month
+              month={currenMonth}
+              selectedMonthIndex={monthIndex}
+              classes={fClasses}
+            />
           </div>
         </section>
       </main>
