@@ -3,14 +3,16 @@ import React from "react";
 import { IClass } from "../../interfaces";
 import EmptyDay from "./EmptyDay";
 import ClsDay from "./ClsDay";
+import { useLogger } from "../../utils/hooks";
 
 type DayProps = {
   day: dayjs.Dayjs;
   classes: IClass[];
   rowIdx: number;
+  selectedMonthIndex: number;
 };
 
-export default function Day({ day, classes }: DayProps) {
+export default function Day({ day, classes, selectedMonthIndex }: DayProps) {
   const dayClasses = classes
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
     .filter((cls) => {
@@ -19,7 +21,10 @@ export default function Day({ day, classes }: DayProps) {
       return cls;
     });
 
-  const { getCurrentDayClass, hidePrevDays } = customDays(day);
+  const { getCurrentDayClass, hidePrevDays } = customDays(
+    day,
+    selectedMonthIndex
+  );
 
   return (
     <>
@@ -42,15 +47,14 @@ export default function Day({ day, classes }: DayProps) {
   );
 }
 
-const customDays = (day: dayjs.Dayjs) => {
+const customDays = (day: dayjs.Dayjs, selectedMonthIndex: number) => {
   const isToday = day.format("DD-MM-YY") === dayjs().format("DD-MM-YY");
   const isThisMonth = day.format("MM-YY") === dayjs().format("MM-YY");
   const isPrevDay = day.format("DD-MM-YY") < dayjs().format("DD-MM-YY");
-  const isPrevMonth = day.format("MM-YY") > dayjs().format("MM-YY");
-  const isNextMonth = day.format("MM-YY") < dayjs().format("MM-YY");
 
-  const currentTimestamp = dayjs().valueOf();
-  const dayTimestamp = day.valueOf();
+  const actvieMonth = dayjs(
+    new Date(dayjs().year(), selectedMonthIndex)
+  ).format("MM-YY");
 
   const getCurrentDayClass = () => {
     if (isToday) return "text-light bg-red rounded-t-md w-full";
@@ -60,8 +64,10 @@ const customDays = (day: dayjs.Dayjs) => {
 
   const hidePrevDays = () => {
     if (isPrevDay && isThisMonth) return "bg-none border-darkBlue border-2";
-    if (dayTimestamp < currentTimestamp && !isToday) return "opacity-0 bg-none";
-    return "bg-darkBlue";
+    if (day.format("MM-YY") === actvieMonth) return "bg-darkBlue";
+
+    // if (dayTimestamp < currentTimestamp && !isToday) return "opacity-0 bg-none";
+    return "opacity-0 bg-none";
   };
 
   return { getCurrentDayClass, hidePrevDays };

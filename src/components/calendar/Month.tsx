@@ -6,8 +6,10 @@ import { IClass } from "../../interfaces";
 export default function Month({
   month,
   classes,
+  selectedMonthIndex,
 }: {
   month: dayjs.Dayjs[][];
+  selectedMonthIndex: number;
   classes: IClass[];
 }) {
   return (
@@ -15,7 +17,13 @@ export default function Month({
       {month.map((row, i) => (
         <React.Fragment key={i}>
           {row.map((day, idx) => (
-            <Day day={day} key={idx} rowIdx={i} classes={classes} />
+            <Day
+              day={day}
+              key={idx}
+              rowIdx={i}
+              selectedMonthIndex={selectedMonthIndex}
+              classes={classes}
+            />
           ))}
         </React.Fragment>
       ))}
