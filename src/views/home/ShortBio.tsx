@@ -13,8 +13,7 @@ export default function ShortBio({ shortBio }: { shortBio: IShortBio }) {
           width={image.fields.file.details.image.width || 700}
           height={image.fields.file.details.image.height}
           alt={image.fields.title}
-          className=""
-          fill
+          className="relative"
           sizes="(max-width: 510px) 90vw,
                             (max-width: 900px) 80vw,
                     60vw"
