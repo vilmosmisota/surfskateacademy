@@ -29,10 +29,10 @@ export const animateUp = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.3,
+      duration: 0.4,
       type: "spring",
       stiffness: 110,
-      staggerChildren: 0.3,
+      staggerChildren: 0.4,
     },
   },
   hidden: {
