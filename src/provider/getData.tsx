@@ -67,6 +67,20 @@ export const getRangedBookings = async (
   return { data };
 };
 
+export const getBookings = async (): Promise<{
+  data: IBooking[] | null;
+}> => {
+  const { data, error } = await supabase
+    .from<IBooking>("booking")
+    .select("created_at,booking_id,email,is_read , class(date,time,city)");
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return { data };
+};
+
 export const getBookingById = async (
   id: string
 ): Promise<{

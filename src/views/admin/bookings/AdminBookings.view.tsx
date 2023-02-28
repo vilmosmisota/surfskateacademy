@@ -70,7 +70,7 @@ export default function AdminBookingsView({
             );
           })}
         </section>
-        <Pagination count={count} />
+        {/* <Pagination count={count} /> */}
       </main>
       <Modal state={classModalOpen}>
         <section className="bg-red p-5 rounded-lg relative text-center">

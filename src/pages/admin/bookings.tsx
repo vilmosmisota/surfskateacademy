@@ -1,7 +1,11 @@
 import { GetServerSideProps } from "next";
 import { IAdminBookingItem } from "../../interfaces";
 import { protectedRoute } from "../../provider/auth";
-import { getNumOfBookings, getRangedBookings } from "../../provider/getData";
+import {
+  getBookings,
+  getNumOfBookings,
+  getRangedBookings,
+} from "../../provider/getData";
 import AdminBookingsView from "../../views/admin/bookings/AdminBookings.view";
 
 export default function Bookings({
@@ -28,7 +32,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
 
   const count = await getNumOfBookings();
-  const { data: bookings } = await getRangedBookings(0, 9);
+  const { data: bookings } = await getBookings();
 
   return { props: { bookings, count } };
 };
