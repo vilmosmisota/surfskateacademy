@@ -3,7 +3,6 @@ import React from "react";
 import { IClass } from "../../interfaces";
 import EmptyDay from "./EmptyDay";
 import ClsDay from "./ClsDay";
-import { useLogger } from "../../utils/hooks";
 
 type DayProps = {
   day: dayjs.Dayjs;
