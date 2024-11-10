@@ -44,10 +44,6 @@ const midPaths = [
 
 const sidePaths = [
   {
-    label: "booking",
-    link: "/booking",
-  },
-  {
     label: "about",
     link: "/about",
   },
@@ -104,6 +100,15 @@ export default function Footer() {
         </article>
         <article className="border-2 md:min-h-[300px] py-5 border-orange md:min-w-full md:max-w-[290px] rounded-lg min-h-[200px] flex align-middle justify-center mb-5">
           <ul className="list-none flex flex-col justify-evenly">
+            <li className="text-light font-medium uppercase tracking-wide">
+              <a
+                href="https://app.acuityscheduling.com/schedule.php?owner=33827037"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Booking
+              </a>
+            </li>
             {sidePaths.map((item) => (
               <li
                 key={item.link}

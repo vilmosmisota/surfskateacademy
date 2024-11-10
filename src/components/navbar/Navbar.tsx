@@ -14,7 +14,7 @@ import ActiveRouteBg from "./ActiveRouteBg";
 
 export default function Navbar() {
   const [isOpen, setOpen] = useState(false);
-  const paths = ["about", "classes", "highlights", "booking"];
+  const paths = ["about", "classes", "highlights"];
 
   return (
     <nav className="relative top-0 z-50 h-14 w-full py-5">
@@ -100,6 +100,17 @@ const SmallScreenItems = ({ paths, handleClick }: SmallScreenItemsProps) => {
         return <Navlinks path={path} key={path} handleClick={handleClick} />;
       })}
 
+      <li className="flex relative w-full justify-center  py-5 md:w-fit  md:py-0 ">
+        <a
+          href="https://app.acuityscheduling.com/schedule.php?owner=33827037"
+          target="_blank"
+          rel="noreferrer"
+          className={` font-sans font-semibold uppercase tracking-wider md:hover:text-lightAmber`}
+        >
+          Booking
+        </a>
+      </li>
+
       <article className=" md:min-h-[300px] py-5  md:min-w-full md:max-w-[290px] rounded-lg min-h-[200px] flex align-middle justify-center flex-col mb-5">
         <div className="flex justify-center mb-5">
           {icons.map((icon) => (
@@ -148,6 +159,16 @@ const LargeScreenItems = ({ paths }: LargeScreenItemsProps) => {
       {paths.map((path) => {
         return <Navlinks path={path} key={path} />;
       })}
+      <li className="flex relative w-full justify-center  py-5 md:w-fit  md:py-0 ">
+        <a
+          href="https://app.acuityscheduling.com/schedule.php?owner=33827037"
+          target="_blank"
+          rel="noreferrer"
+          className="font-sans font-semibold uppercase tracking-wider md:hover:text-lightAmber"
+        >
+          Booking
+        </a>
+      </li>
     </ul>
   );
 };
