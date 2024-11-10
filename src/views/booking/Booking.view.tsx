@@ -7,7 +7,6 @@ import Quotes from "../../components/quotes/Quotes";
 import { IClass } from "../../interfaces";
 import { ClassesProps } from "../../pages/booking";
 import getMonth from "../../utils/getMonth";
-import { useLogger } from "../../utils/hooks";
 
 import FilterClasses from "./FilterClasses";
 
