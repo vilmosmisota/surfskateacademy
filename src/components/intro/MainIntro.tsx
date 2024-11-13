@@ -22,12 +22,20 @@ export default function Mainintro({ intro }: { intro: IIntro }) {
 
       {intro.fields.buttonDestination && (
         <motion.div variants={animateItemsUp}>
-          <DelayedLinkBtn
+          {/* <DelayedLinkBtn
             href={intro.fields.buttonDestination}
             theme="primary-btn"
           >
             {intro.fields.buttonLabel}
-          </DelayedLinkBtn>
+          </DelayedLinkBtn> */}
+          <a
+            href="https://app.acuityscheduling.com/schedule.php?owner=33827037"
+            target="_blank"
+            rel="noreferrer"
+            className="btn primary-btn"
+          >
+            Book now
+          </a>
         </motion.div>
       )}
     </motion.section>

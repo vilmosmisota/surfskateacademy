@@ -24,12 +24,21 @@ export default function CallToAction({
         </ReactMarkdown>
       </motion.div>
       <motion.div variants={animateItemsUp}>
-        <DelayedLinkBtn
+        {/* <DelayedLinkBtn
           href={callToAction.fields.buttonDestination}
           theme="btn secondary-btn"
         >
           {callToAction.fields.buttonLabel}
-        </DelayedLinkBtn>
+        </DelayedLinkBtn> */}
+
+        <a
+          href="https://app.acuityscheduling.com/schedule.php?owner=33827037"
+          target="_blank"
+          rel="noreferrer"
+          className="btn secondary-btn"
+        >
+          Book now
+        </a>
       </motion.div>
     </motion.section>
   );
