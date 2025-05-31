@@ -102,7 +102,7 @@ const SmallScreenItems = ({ paths, handleClick }: SmallScreenItemsProps) => {
 
       <li className="flex relative w-full justify-center  py-5 md:w-fit  md:py-0 ">
         <a
-          href="https://app.acuityscheduling.com/schedule.php?owner=33827037"
+          href="https://booking.lostshore.com/surfskate"
           target="_blank"
           rel="noreferrer"
           className={` font-sans font-semibold uppercase tracking-wider md:hover:text-lightAmber`}
@@ -161,7 +161,7 @@ const LargeScreenItems = ({ paths }: LargeScreenItemsProps) => {
       })}
       <li className="flex relative w-full justify-center  py-5 md:w-fit  md:py-0 ">
         <a
-          href="https://app.acuityscheduling.com/schedule.php?owner=33827037"
+          href="https://booking.lostshore.com/surfskate"
           target="_blank"
           rel="noreferrer"
           className="font-sans font-semibold uppercase tracking-wider md:hover:text-lightAmber"

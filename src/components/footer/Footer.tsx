@@ -102,7 +102,7 @@ export default function Footer() {
           <ul className="list-none flex flex-col justify-evenly">
             <li className="text-light font-medium uppercase tracking-wide">
               <a
-                href="https://app.acuityscheduling.com/schedule.php?owner=33827037"
+                href="https://booking.lostshore.com/surfskate"
                 target="_blank"
                 rel="noreferrer"
               >

@@ -32,7 +32,7 @@ export default function CallToAction({
         </DelayedLinkBtn> */}
 
         <a
-          href="https://app.acuityscheduling.com/schedule.php?owner=33827037"
+          href="https://booking.lostshore.com/surfskate"
           target="_blank"
           rel="noreferrer"
           className="btn secondary-btn"

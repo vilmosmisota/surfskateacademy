@@ -41,5 +41,7 @@ export const loginUser = async ({ email, password }: AuthUserProps) => {
     password,
   });
 
+  console.log(user, error);
+
   return { user, error };
 };

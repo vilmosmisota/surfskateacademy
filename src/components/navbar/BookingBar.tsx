@@ -8,7 +8,7 @@ export default function BookingBar() {
       <div className="self-start md:self-center border-2 rounded-lg ">
         <a
           className="uppercase text-sm py-2 font-bold px-1"
-          href="https://app.acuityscheduling.com/schedule.php?owner=33827037"
+          href="https://booking.lostshore.com/surfskate"
           target="_blank"
           rel="noreferrer"
         >
